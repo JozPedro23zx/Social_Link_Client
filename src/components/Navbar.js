@@ -1,18 +1,22 @@
 import {Link} from 'react-router-dom'
+import '../customStyles/Navbar.css'
 
 function Navbar(){
     return(
+      <div className='options'>
+        <input type="search"></input>
         <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/profile">Profile</Link>
-        </li>
-        <li>
-          <Link to="/chat">Chat</Link>
-        </li>
-      </ul>
+          <li>
+            <Link to="/"><p className='link'>Home</p></Link>
+          </li>
+          <li>
+            <Link to="/profile"><p className='link'>Profile</p></Link>
+          </li>
+          <li>
+            <Link to="/chat"><p className='link'>Chat</p></Link>
+          </li>
+        </ul>
+      </div>
     )
 }
 
