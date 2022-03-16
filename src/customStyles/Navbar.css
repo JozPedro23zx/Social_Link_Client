@@ -13,3 +13,7 @@
     font-size: 19px;
     
 }
+
+.navbar .options .link :hover{
+    background-color: rgb(65, 65, 65);
+}
