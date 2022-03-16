@@ -1,7 +1,7 @@
 import '../../customStyles/postBox.css'
 import like from '../../images/like.png'
 import comment from '../../images/comment.png'
-
+import {Link} from 'react-router-dom'
 
 
 function PostBox(props){
@@ -12,7 +12,6 @@ function PostBox(props){
     }
 
     const date = new Date(`${user.date}`)
-    console.log(date)
     return(
         <div className='post'>
             <div className='user-info'>
@@ -22,7 +21,7 @@ function PostBox(props){
             </div>
             <div className='user-info-right'>
                 <div className='user-name'>
-                    <span className='fake-link'>{user.name}</span>
+                    <Link to={`profile${user.id}`}><span className='fake-link'>{user.name}</span></Link>
                 </div>
             </div>
             </div>

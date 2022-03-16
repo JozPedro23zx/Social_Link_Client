@@ -1,6 +1,6 @@
 import InputBox from './sub-components/inputBox'
 import PostBox from './sub-components/postBox'
-import UsersDatabase from '../dataBase/users.json'
+import UsersDatabase from '../dataBase/usersPost.json'
 
 function Home() {
     return(

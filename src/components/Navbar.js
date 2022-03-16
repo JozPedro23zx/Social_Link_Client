@@ -10,7 +10,7 @@ function Navbar(){
             <Link to="/"><p className='link'>Home</p></Link>
           </li>
           <li>
-            <Link to="/profile"><p className='link'>Profile</p></Link>
+            <Link to="/profile/5"><p className='link'>Profile</p></Link>
           </li>
           <li>
             <Link to="/chat"><p className='link'>Chat</p></Link>

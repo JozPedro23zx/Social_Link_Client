@@ -1,0 +1,32 @@
+/* .content{
+    padding: 0;
+} */
+
+.profile{
+    height: 100%;
+    width: 100%;
+}
+
+.profileHeader{
+    text-align: center;
+}
+
+.profile .profileInfo{
+    display: inline-block;
+    line-height: 50px;
+}
+
+.profile .profileInfo .avatar {
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.profile hr{
+    margin-bottom: 40px;
+}
+
+.profile .allPost{
+    padding-left: 10px;
+}

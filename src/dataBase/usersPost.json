@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1",
+        "name": "Alex",
+        "avatar": "/imgTest/user1.png",
+        "content": "Im make a post to test",
+        "date": "2022-05-18T03:24:00",
+        "likes": "8"
+    },
+    {
+        "id": "2",
+        "name": "Peter aqui",
+        "avatar": "/imgTest/user2.png",
+        "content": "AAAAAAHHHHHHHHHHH",
+        "date": "2022-08-21T03:24:00",
+        "likes": "15"
+    },
+    {
+        "id": "3",
+        "name": "Maze14",
+        "avatar": "/imgTest/user3.png",
+        "content": "Ok, this is my post, I hope you... like it",
+        "date": "2022-03-05T03:24:00",
+        "likes": "81"
+    },
+    {
+        "id": "4",
+        "name": "System32",
+        "avatar": "/imgTest/user4.png",
+        "content": "Can someone help me?",
+        "date": "2022-06-24T03:24:00",
+        "likes": "1"
+    },
+    {
+        "id": "1",
+        "name": "Alex",
+        "avatar": "/imgTest/user1.png",
+        "content": "I'll do more tests soon",
+        "date": "2022-07-14T03:24:00",
+        "likes": "11"
+    },
+    {
+        "id": "4",
+        "name": "System32",
+        "avatar": "/imgTest/user4.png",
+        "content": "Why doesn't anyone answer me",
+        "date": "2022-06-25T03:24:00",
+        "likes": "0"
+    }
+]
