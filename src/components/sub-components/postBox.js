@@ -1,10 +1,14 @@
 import '../../customStyles/postBox.css'
-import like from '../../images/like.png'
+import default_like from '../../images/like.png'
+import true_like from '../../images/like.png'
+
 import comment from '../../images/comment.png'
 import {Link} from 'react-router-dom'
 
 
 function PostBox(props){
+    var like = default_like
+
     const user = props.user
     const avatarImage = {
         background: `url(${user.avatar})`,
@@ -21,7 +25,7 @@ function PostBox(props){
             </div>
             <div className='user-info-right'>
                 <div className='user-name'>
-                    <Link to={`profile${user.id}`}><span className='fake-link'>{user.name}</span></Link>
+                    <Link to={`profile/${user.id}`}><span className='fake-link'>{user.name}</span></Link>
                 </div>
             </div>
             </div>
