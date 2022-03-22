@@ -1,15 +1,19 @@
 import '../../customStyles/postBox.css'
 import default_like from '../../images/like.png'
-import true_like from '../../images/like.png'
+import true_like from '../../images/like2.png'
 
 import comment from '../../images/comment.png'
 import {Link} from 'react-router-dom'
 
 
 function PostBox(props){
-    var like = default_like
-
     const user = props.user
+    const likeList = props.likeList
+
+
+    var like = likeList.some(element => element === user.idPost)
+    var likeIcon = like ? true_like : default_like
+
     const avatarImage = {
         background: `url(${user.avatar})`,
         backgroundSize: "cover"
@@ -25,7 +29,7 @@ function PostBox(props){
             </div>
             <div className='user-info-right'>
                 <div className='user-name'>
-                    <Link to={`profile/${user.id}`}><span className='fake-link'>{user.name}</span></Link>
+                    <Link to={`profile/${user.idUser}`}><span className='fake-link'>{user.name}</span></Link>
                 </div>
             </div>
             </div>
@@ -39,7 +43,7 @@ function PostBox(props){
             </div>
 
             <div className='bottom-buttons'>
-                <div className='like'><img src={like} alt={"Like button"}></img> {user.likes}</div>
+                <div onClick={() => props.handleClick(user.idPost, like)} className='like'><img src={likeIcon} alt={"Like button"}></img> {user.likes}</div>
                 <img src={comment}lt={"Comment button"} alt={"Comment button"}></img>
             </div>
         </div>

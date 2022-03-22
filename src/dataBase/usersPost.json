@@ -1,6 +1,7 @@
 [
     {
-        "id": "1",
+        "idPost": "1",
+        "idUser": "1",
         "name": "Alex",
         "avatar": "/imgTest/user1.png",
         "content": "Im make a post to test",
@@ -8,7 +9,8 @@
         "likes": "8"
     },
     {
-        "id": "2",
+        "idPost": "2",
+        "idUser": "2",
         "name": "Peter aqui",
         "avatar": "/imgTest/user2.png",
         "content": "AAAAAAHHHHHHHHHHH",
@@ -16,7 +18,8 @@
         "likes": "15"
     },
     {
-        "id": "3",
+        "idPost": "3",
+        "idUser": "3",
         "name": "Maze14",
         "avatar": "/imgTest/user3.png",
         "content": "Ok, this is my post, I hope you... like it",
@@ -24,7 +27,8 @@
         "likes": "81"
     },
     {
-        "id": "4",
+        "idPost": "4",
+        "idUser": "4",
         "name": "System32",
         "avatar": "/imgTest/user4.png",
         "content": "Can someone help me?",
@@ -32,7 +36,8 @@
         "likes": "1"
     },
     {
-        "id": "1",
+        "idPost": "5",
+        "idUser": "1",
         "name": "Alex",
         "avatar": "/imgTest/user1.png",
         "content": "I'll do more tests soon",
@@ -40,7 +45,8 @@
         "likes": "11"
     },
     {
-        "id": "4",
+        "idPost": "6",
+        "idUser": "4",
         "name": "System32",
         "avatar": "/imgTest/user4.png",
         "content": "Why doesn't anyone answer me",
