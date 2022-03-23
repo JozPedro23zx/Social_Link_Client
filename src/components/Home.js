@@ -1,14 +1,38 @@
 import InputBox from './sub-components/inputBox'
 import PostBox from './sub-components/postBox'
-import UsersDatabase from '../dataBase/usersPost.json'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function Home() {
+    
     const [likeList, setArray] = useState(["1", "3", "4"])
-    const [users, setUsers] = useState(UsersDatabase)
+    const [users, setUsers] = useState([])
 
+    useEffect(() =>{
+        const fetchItems = async () =>{
+            try{
+                const response = await fetch('http://localhost:8000/getAllPosts')
+                const data = await response.json()
+                console.log(data)
+                setUsers(data.data)
+            }catch(err){
+                console.log(err)
+            }
+        }
+        (async () => await fetchItems())()
+    }, [])
+    
+    
+    // async function getData(){
+    //     await fetch('http://localhost:8000/getAllPosts').then(res => res.json()).then((json) =>{
+    //         setUsers(json)
+    //     })
+    // }
+
+    // getData()
+    
+    console.log(users)
+    
     function Like(postId, like){
-        console.log(users)
 
         if(like){
             let index = likeList.indexOf(postId)
