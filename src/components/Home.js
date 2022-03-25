@@ -12,7 +12,6 @@ function Home() {
             try{
                 const response = await fetch('http://localhost:8000/getAllPosts')
                 const data = await response.json()
-                console.log(data)
                 setUsers(data.data)
             }catch(err){
                 console.log(err)
@@ -22,17 +21,9 @@ function Home() {
     }, [])
     
     
-    // async function getData(){
-    //     await fetch('http://localhost:8000/getAllPosts').then(res => res.json()).then((json) =>{
-    //         setUsers(json)
-    //     })
-    // }
-
-    // getData()
-    
-    console.log(users)
     
     function Like(postId, like){
+        console.log(postId)
 
         if(like){
             let index = likeList.indexOf(postId)
