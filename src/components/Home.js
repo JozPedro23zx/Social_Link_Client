@@ -10,13 +10,12 @@ function Home() {
     useEffect(() =>{
         const fetchItems = async () =>{
             try{
-                const dataPosts = await fetch('http://192.168.0.4:8000/getAllPosts')
+                const dataPosts = await fetch('http://localhost:8000/getAllPosts')
                 const posts = await dataPosts.json()
                 setUsers(posts.data)
 
-                const dataLikes = await fetch('http://192.168.0.4:8000/getLikeList')
+                const dataLikes = await fetch('http://localhost:8000/getLikeList')
                 const likes = await dataLikes.json()
-                console.log(likes.likes)
                 setArray(likes.likes)
             }catch(err){
                 console.log(err)
@@ -28,7 +27,6 @@ function Home() {
     
     
     async function Like(postId, isLike){
-        console.log(postId, isLike)
         try{
             const requestOptions = {
                 method: 'POST',
@@ -41,9 +39,9 @@ function Home() {
                     })
             };
     
-            var response = await fetch('http://192.168.0.4:8000/changeLikeList', requestOptions)
+            var response = await fetch('http://localhost:8000/changeLikeList', requestOptions)
             var data = await response.json()
-            console.log(data)
+            setArray(data)
         }catch(err){console.log(err)}
     }
 

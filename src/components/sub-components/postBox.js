@@ -10,16 +10,12 @@ import {useState} from 'react'
 function PostBox(props){
     const user = props.user
     const likeList = props.likeList
-    var bollType = likeList.some(element => element === user.idPost)
+    var isLike = likeList.some(element => element === user.idPost)
 
-    const [isLike, setLike] = useState(bollType)
     const [likes, setLikesCount] = useState(user.likes)
-
+    
     var likeIcon = isLike ? true_like : default_like
-
-    console.log("bollType", bollType)
-    console.log("isLike", isLike)
-    console.log("likes", likes)
+    
 
     const avatarImage = {
         background: `url(${user.avatar})`,
@@ -61,7 +57,6 @@ function PostBox(props){
         props.handleClick(user.idPost, isLike)
 
         setLikesCount(isLike ? likes - 1 : likes + 1)
-        setLike(!isLike)
 
     }
 }
