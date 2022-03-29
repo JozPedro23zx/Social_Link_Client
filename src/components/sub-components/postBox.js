@@ -4,15 +4,22 @@ import true_like from '../../images/like2.png'
 
 import comment from '../../images/comment.png'
 import {Link} from 'react-router-dom'
+import {useState} from 'react'
 
 
 function PostBox(props){
     const user = props.user
     const likeList = props.likeList
+    var bollType = likeList.some(element => element === user.idPost)
 
+    const [isLike, setLike] = useState(bollType)
+    const [likes, setLikesCount] = useState(user.likes)
 
-    var like = likeList.some(element => element === user.idPost)
-    var likeIcon = like ? true_like : default_like
+    var likeIcon = isLike ? true_like : default_like
+
+    console.log("bollType", bollType)
+    console.log("isLike", isLike)
+    console.log("likes", likes)
 
     const avatarImage = {
         background: `url(${user.avatar})`,
@@ -43,11 +50,20 @@ function PostBox(props){
             </div>
 
             <div className='bottom-buttons'>
-                <div onClick={() => props.handleClick(user.idPost, like)} className='like'><img src={likeIcon} alt={"Like button"}></img> {user.likes}</div>
+                <div onClick={() => incrementLike()} className='like'><img src={likeIcon} alt={"Like button"}></img> {likes}</div>
                 <img src={comment}lt={"Comment button"} alt={"Comment button"}></img>
             </div>
         </div>
     )
+
+
+    function incrementLike(){
+        props.handleClick(user.idPost, isLike)
+
+        setLikesCount(isLike ? likes - 1 : likes + 1)
+        setLike(!isLike)
+
+    }
 }
 
 

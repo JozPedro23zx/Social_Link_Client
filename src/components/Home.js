@@ -4,15 +4,20 @@ import { useState, useEffect } from 'react'
 
 function Home() {
     
-    const [likeList, setArray] = useState(["1", "3", "4"])
+    const [likeList, setArray] = useState([])
     const [users, setUsers] = useState([])
 
     useEffect(() =>{
         const fetchItems = async () =>{
             try{
-                const response = await fetch('http://localhost:8000/getAllPosts')
-                const data = await response.json()
-                setUsers(data.data)
+                const dataPosts = await fetch('http://localhost:8000/getAllPosts')
+                const posts = await dataPosts.json()
+                setUsers(posts.data)
+
+                const dataLikes = await fetch('http://localhost:8000/getLikeList')
+                const likes = await dataLikes.json()
+                console.log(likes.likes)
+                setArray(likes.likes)
             }catch(err){
                 console.log(err)
             }
@@ -22,18 +27,24 @@ function Home() {
     
     
     
-    function Like(postId, like){
-        console.log(postId)
-
-        if(like){
-            let index = likeList.indexOf(postId)
-            let newList = likeList.filter(element => element !== postId)
-            if(index >= 0) setArray(newList)
-
-        }else{
-            setArray([...likeList, postId])
-
-        }
+    async function Like(postId, isLike){
+        console.log(postId, isLike)
+        try{
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(
+                    { 
+                        idUser: 5,
+                        postId,
+                        isLike,
+                    })
+            };
+    
+            var response = await fetch('http://localhost:8000/changeLikeList', requestOptions)
+            var data = await response.json()
+            console.log(data)
+        }catch(err){console.log(err)}
     }
 
     return(
