@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home'
 import Profile from './components/Profile'
 import Chat from './components/Chat'
-
+import Comments from './components/Comments';
 
 function App() {
   return (
@@ -17,6 +17,8 @@ function App() {
             <Route path='/profile/:userId' element={<Profile />}/>
 
             <Route path='/chat' element={<Chat />}/>
+
+            <Route path='/post/:postId' element={<Comments />}/>
           </Routes>
         </div>
         
