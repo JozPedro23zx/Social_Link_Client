@@ -1,8 +1,8 @@
 import '../../customStyles/postBox.css'
 import default_like from '../../images/like.png'
 import true_like from '../../images/like2.png'
-
 import comment from '../../images/comment.png'
+
 import {Link} from 'react-router-dom'
 import {useState} from 'react'
 
@@ -46,15 +46,32 @@ function PostBox(props){
             </div>
 
             <div className='bottom-buttons'>
-                <div onClick={() => incrementLike()} className='like'><img src={likeIcon} alt={"Like button"}></img> {likes}</div>
-                <img src={comment}lt={"Comment button"} alt={"Comment button"}></img>
+                <div onClick={() => incrementLike(user.idPost, isLike)} className='like'><img src={likeIcon} alt={"Like button"}></img> {likes}</div>
+                <Link to={`post/${user.idPost}`}><img src={comment}lt={"Comment button"} alt={"Comment button"}></img></Link>
             </div>
         </div>
     )
 
 
-    function incrementLike(){
-        props.handleClick(user.idPost, isLike)
+    async function incrementLike(postId, isLike){
+        try{
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(
+                    { 
+                        idUser: 5,
+                        postId,
+                        isLike,
+                    })
+            };
+    
+            var response = await fetch('http://localhost:8000/changeLikeList', requestOptions)
+            var data = await response.json()
+            props.handleClick(data)
+
+        }catch(err){console.log(err)}
+
 
         setLikesCount(isLike ? likes - 1 : likes + 1)
 

@@ -26,23 +26,8 @@ function Home() {
     
     
     
-    async function Like(postId, isLike){
-        try{
-            const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(
-                    { 
-                        idUser: 5,
-                        postId,
-                        isLike,
-                    })
-            };
-    
-            var response = await fetch('http://localhost:8000/changeLikeList', requestOptions)
-            var data = await response.json()
-            setArray(data)
-        }catch(err){console.log(err)}
+    async function Like(newLikeList){
+        setArray(newLikeList)
     }
 
     return(
