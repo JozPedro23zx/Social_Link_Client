@@ -1,4 +1,5 @@
 import PostBox from './sub-components/postBox'
+import CommentaryList from './sub-components/commentaryList'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
@@ -6,6 +7,7 @@ function Comments(){
     const { postId } = useParams()
     const [post, setPost] = useState([])
     const [likeList, setList] = useState([])
+    const [commentList, setComments] = useState([])
     
 
     useEffect(() =>{
@@ -13,12 +15,16 @@ function Comments(){
             try{
                 const response = await fetch(`https://sociallinkserver.herokuapp.com/getPost/${postId}`)
                 const dataPost  = await response.json()
-                console.log(dataPost)
                 setPost(dataPost)
                 
                 const dataLikes = await fetch('https://sociallinkserver.herokuapp.com/getLikeList')
                 const likes = await dataLikes.json()
                 setList(likes.likes)
+
+                // const dataComments = await fetch(`https://sociallinkserver.herokuapp.com/getComments/${postId}`)
+                // const comments = await dataComments.json()
+                // console.log(comments)
+                // setComments(comments)
             }catch(err){
                 console.log(err)
             }
@@ -34,8 +40,16 @@ function Comments(){
 
     return(
         <div>
-            <PostBox likeList={likeList} user={post} handleClick={Like} />    
+            <div>
+                <PostBox likeList={likeList} user={post} handleClick={Like} />    
+            </div>
+            {/* {commentList.map(commentData =>( */}
+                <div>
+                    <CommentaryList />    
+                </div>
+            {/*))}*/}
         </div>
+
     )
 }
 

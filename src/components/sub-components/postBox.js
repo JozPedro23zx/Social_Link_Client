@@ -14,8 +14,6 @@ function PostBox(props){
 
     const [likes, setLikesCount] = useState()
     useEffect(() => {setLikesCount(user.likes)}, [user.likes])
-
-    console.log(user.avatar)
     
     var likeIcon = isLike ? true_like : default_like
 
