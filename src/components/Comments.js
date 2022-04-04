@@ -10,12 +10,12 @@ function Comments(){
     useEffect(() =>{
         const fetchItems = async () =>{
             try{
-                const response = await fetch(`http://localhost:8000/getPost/${postId}`)
+                const response = await fetch(`https://sociallinkserver.herokuapp.com/getPost/${postId}`)
                 const dataPost  = await response.json()
                 console.log(dataPost)
                 setPost(dataPost)
                 
-                const dataLikes = await fetch('http://localhost:8000/getLikeList')
+                const dataLikes = await fetch('https://sociallinkserver.herokuapp.com/getLikeList')
                 const likes = await dataLikes.json()
                 setList(likes.likes)
             }catch(err){

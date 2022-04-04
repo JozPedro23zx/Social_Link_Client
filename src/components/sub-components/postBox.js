@@ -13,6 +13,8 @@ function PostBox(props){
     var isLike = likeList.some(element => element === user.idPost)
 
     const [likes, setLikesCount] = useState(user.likes)
+
+    console.log(user)
     
     var likeIcon = isLike ? true_like : default_like
     
@@ -66,7 +68,7 @@ function PostBox(props){
                     })
             };
     
-            var response = await fetch('http://localhost:8000/changeLikeList', requestOptions)
+            var response = await fetch('https://sociallinkserver.herokuapp.com/changeLikeList', requestOptions)
             var data = await response.json()
             props.handleClick(data)
 

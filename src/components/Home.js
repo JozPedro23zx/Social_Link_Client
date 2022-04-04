@@ -14,7 +14,7 @@ function Home() {
                 const posts = await dataPosts.json()
                 setUsers(posts.data)
 
-                const dataLikes = await fetch('http://localhost:8000/getLikeList')
+                const dataLikes = await fetch('https://sociallinkserver.herokuapp.com/getLikeList')
                 const likes = await dataLikes.json()
                 setArray(likes.likes)
             }catch(err){
