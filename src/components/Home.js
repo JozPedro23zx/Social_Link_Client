@@ -5,14 +5,14 @@ import { useState, useEffect } from 'react'
 function Home() {
     
     const [likeList, setArray] = useState([])
-    const [users, setUsers] = useState([])
+    const [posts, setPosts] = useState([])
 
     useEffect(() =>{
         const fetchItems = async () =>{
             try{
                 const dataPosts = await fetch('http://sociallinkserver.herokuapp.com/getAllPosts')
                 const posts = await dataPosts.json()
-                setUsers(posts.data)
+                setPosts(posts.data)
 
                 const dataLikes = await fetch('https://sociallinkserver.herokuapp.com/getLikeList')
                 const likes = await dataLikes.json()
@@ -36,9 +36,9 @@ function Home() {
                 <InputBox />
             </div>
 
-            {users.map(userData =>(
+            {posts.map(postData =>(
                 <div>
-                    <PostBox likeList={likeList} user={userData} handleClick={Like} />    
+                    <PostBox likeList={likeList} post={postData} handleClick={Like} />    
                 </div>
             ))}
         </div>

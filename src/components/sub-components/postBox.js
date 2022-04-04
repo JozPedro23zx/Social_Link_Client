@@ -8,16 +8,31 @@ import {useState, useEffect} from 'react'
 
 
 function PostBox(props){
-    const user = props.user
+    const post = props.post
     const likeList = props.likeList
-    var isLike = likeList.some(element => element === user.id_post)
 
+    var isLike = likeList.some(element => element === post.id_post)
     const [likes, setLikesCount] = useState()
-    useEffect(() => {setLikesCount(user.likes)}, [user.likes])
+    const [user, setUser] = useState([])
+
+    useEffect(() => {
+        const fetchItems = async () =>{
+            try{
+                const dataUser = await fetch(`http://sociallinkserver.herokuapp.com/getUser/${post.id_user}`)
+                const user = await dataUser.json()
+                setUser(user.data)
+            }catch(err){
+                console.log(err)
+            }
+        }
+        (async () => await fetchItems())()
+        setLikesCount(post.likes)
+    }, [post.likes, post.id_user])
     
     var likeIcon = isLike ? true_like : default_like
 
-    const date = new Date(`${user.date}`)
+    console.log(user)
+    const date = new Date(`${post.date}`)
     return(
         <div className='post'>
             <div className='user-info'>
@@ -26,13 +41,13 @@ function PostBox(props){
             </div>
             <div className='user-info-right'>
                 <div className='user-name'>
-                    <Link to={`profile/${user.idUser}`}><span className='fake-link'>{user.name}</span></Link>
+                    <Link to={`profile/${post.id_user}`}><span className='fake-link'>{user.name}</span></Link>
                 </div>
             </div>
             </div>
 
             <div className='post-content'>
-                {user.content}
+                {post.content}
             </div>
 
             <div className='metadata'>
@@ -40,8 +55,8 @@ function PostBox(props){
             </div>
 
             <div className='bottom-buttons'>
-                <div onClick={() => incrementLike(user.id_post, isLike)} className='like'><img src={likeIcon} alt={"Like button"}></img> {likes}</div>
-                <Link to={`post/${user.id_post}`}><img src={comment}lt={"Comment button"} alt={"Comment button"}></img></Link>
+                <div onClick={() => incrementLike(post.id_post, isLike)} className='like'><img src={likeIcon} alt={"Like button"}></img> {likes}</div>
+                <Link to={`post/${post.id_post}`}><img src={comment}lt={"Comment button"} alt={"Comment button"}></img></Link>
             </div>
         </div>
     )
