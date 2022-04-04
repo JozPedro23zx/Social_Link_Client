@@ -4,33 +4,27 @@ import true_like from '../../images/like2.png'
 import comment from '../../images/comment.png'
 
 import {Link} from 'react-router-dom'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 
 function PostBox(props){
     const user = props.user
     const likeList = props.likeList
-    var isLike = likeList.some(element => element === user.idPost)
+    var isLike = likeList.some(element => element === user.id_post)
 
-    const [likes, setLikesCount] = useState(user.likes)
+    const [likes, setLikesCount] = useState()
+    useEffect(() => {setLikesCount(user.likes)}, [user.likes])
 
-    console.log(user)
+    console.log(user.avatar)
     
     var likeIcon = isLike ? true_like : default_like
-    
-
-    const avatarImage = {
-        background: `url(${user.avatar})`,
-        backgroundSize: "cover"
-    }
 
     const date = new Date(`${user.date}`)
     return(
         <div className='post'>
             <div className='user-info'>
             <div className='avatar-container'>
-                <div className='avatar' style={avatarImage}></div>
-                {/* <img className='avatar' src={user.icon} alt='avatar'></img> */}
+                <img className='avatar' src={user.avatar} alt='avatar'></img>
             </div>
             <div className='user-info-right'>
                 <div className='user-name'>
@@ -48,8 +42,8 @@ function PostBox(props){
             </div>
 
             <div className='bottom-buttons'>
-                <div onClick={() => incrementLike(user.idPost, isLike)} className='like'><img src={likeIcon} alt={"Like button"}></img> {likes}</div>
-                <Link to={`post/${user.idPost}`}><img src={comment}lt={"Comment button"} alt={"Comment button"}></img></Link>
+                <div onClick={() => incrementLike(user.id_post, isLike)} className='like'><img src={likeIcon} alt={"Like button"}></img> {likes}</div>
+                <Link to={`post/${user.id_post}`}><img src={comment}lt={"Comment button"} alt={"Comment button"}></img></Link>
             </div>
         </div>
     )

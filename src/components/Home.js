@@ -10,7 +10,7 @@ function Home() {
     useEffect(() =>{
         const fetchItems = async () =>{
             try{
-                const dataPosts = await fetch('http://localhost:8000/getAllPosts')
+                const dataPosts = await fetch('http://sociallinkserver.herokuapp.com/getAllPosts')
                 const posts = await dataPosts.json()
                 setUsers(posts.data)
 

@@ -7,6 +7,7 @@ function Comments(){
     const [post, setPost] = useState([])
     const [likeList, setList] = useState([])
     
+
     useEffect(() =>{
         const fetchItems = async () =>{
             try{
