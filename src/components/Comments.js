@@ -21,10 +21,10 @@ function Comments(){
                 const likes = await dataLikes.json()
                 setList(likes.likes)
 
-                // const dataComments = await fetch(`https://sociallinkserver.herokuapp.com/getComments/${postId}`)
-                // const comments = await dataComments.json()
-                // console.log(comments)
-                // setComments(comments)
+                const dataComments = await fetch(`https://sociallinkserver.herokuapp.com/getComments/${postId}`)
+                const comments = await dataComments.json()
+                console.log(comments)
+                setComments(comments)
             }catch(err){
                 console.log(err)
             }
@@ -41,13 +41,13 @@ function Comments(){
     return(
         <div>
             <div>
-                <PostBox likeList={likeList} user={post} handleClick={Like} />    
+                <PostBox likeList={likeList} post={post} handleClick={Like} />    
             </div>
-            {/* {commentList.map(commentData =>( */}
+            {commentList.map(commentData =>(
                 <div>
-                    <CommentaryList />    
+                    <CommentaryList post={commentData}/>    
                 </div>
-            {/*))}*/}
+            ))}
         </div>
 
     )
