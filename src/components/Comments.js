@@ -1,5 +1,6 @@
 import PostBox from './sub-components/postBox'
 import CommentaryList from './sub-components/commentaryList'
+import CommentaryBox from './sub-components/commentaryBox'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
@@ -42,6 +43,7 @@ function Comments(){
         <div className='commentary'>
             <div>
                 <PostBox likeList={likeList} post={post} handleClick={Like} />    
+                <CommentaryBox />
             </div>
             {commentList.map(commentData =>(
                 <div>

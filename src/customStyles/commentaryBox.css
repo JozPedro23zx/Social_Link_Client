@@ -1,0 +1,14 @@
+.inputComment{
+    margin-top: -20px;
+    margin-bottom: 23px;
+}
+
+.inputComment form{
+    display: flex;
+}
+
+.inputComment textarea{
+    width: 450px;
+    height: 50px;
+    border-color: rgb(206, 205, 205);
+}

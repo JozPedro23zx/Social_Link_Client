@@ -1,4 +1,4 @@
-import '../../customStyles/comentaryList.css'
+import '../../customStyles/commentaryList.css'
 import { useState, useEffect } from 'react'
 
 function CommentaryList(props){
