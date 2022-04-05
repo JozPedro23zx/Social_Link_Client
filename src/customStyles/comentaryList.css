@@ -1,0 +1,154 @@
+@media all and (min-width:0px) and (max-width: 425px) {
+    .comment {
+        width: 90% !important;
+    }
+}
+
+.user-info-right {
+    padding-top: 2px;
+}
+.user-name {
+    font-weight: bold;
+}
+
+.comment {
+    font-size: 15px;
+    text-align: left;
+
+    
+    padding: 15px 15px 0 15px;
+    max-width: 600px;
+    width: 60%;
+    
+
+    border: 1px solid #e6ecf0;
+    color: rgb(20, 23, 26);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.comment-content {
+    padding-top: 6px;
+    font-size: 19px;
+    clear: left;
+    padding-bottom: 15px;
+}
+
+.metadata {
+    color: rgb(101, 119, 134);
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e6ecf0;
+}
+
+.fake-link {
+    cursor: pointer;
+}
+.fake-link:hover {
+    text-decoration: underline;
+}
+.comment .avatar-container {
+    margin-right: 10px;
+    float: left;
+}
+.comment .avatar {
+    height: 39px;
+    width: 39px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.bottom-buttons {
+    display: flex;
+    flex-direction: row;
+}
+.bottom-buttons {
+    height: 48px;
+    width: 48px;
+    display: flex;
+    cursor: pointer;
+    flex: 0 25%;
+    box-sizing: border-box;
+}
+.bottom-button > div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.bottom-buttons img {
+    padding: 7px;
+    margin: auto;
+    fill: rgb(101, 119, 134);
+    height: 22px;
+    width: 27px;
+    margin-left: 4px;
+    transition: 0.2s;
+}
+
+.bottom-buttons .like{
+    display: flex;
+    align-items: center;
+}
+
+/* Images */
+.image-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.image-container img {
+    border-radius: 13px;
+    border: 1px solid #ccd6dd;
+    width: 100%;
+}
+.images-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 318px;
+    border-radius: 13px;
+    border: 1px solid #ccd6dd;
+}
+.images-container img {
+    cursor: pointer;
+}
+.full-height-image {
+    width: calc(50% - 1px);
+    height: 100%;
+    overflow: hidden;
+}
+.full-height-image img {
+    height: 100%;
+    min-width: 100%;
+}
+.left-image {
+    float: left;
+}
+.half-height-image {
+    height: 158px;
+    overflow: hidden;
+}
+.half-height-image img {
+    width: 100%;
+    min-height: 158px;
+}
+.images-container .right-col, .left-col {
+    float: left;
+    width: calc(50% - 1px);
+    height: 100%;
+}
+.images-container .horizontal-spacer {
+    height: 2px;
+    overflow: hidden;
+}
+.vertical-spacer {
+    width: 2px;
+    height: 100%;
+    float: left;
+}
+
+
+.comment svg {
+    box-sizing: content-box !important;
+    vertical-align: baseline !important;
+}

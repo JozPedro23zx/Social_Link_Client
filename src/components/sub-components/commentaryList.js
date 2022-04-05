@@ -1,3 +1,4 @@
+import '../../customStyles/comentaryList.css'
 import { useState, useEffect } from 'react'
 
 function CommentaryList(props){
@@ -20,7 +21,7 @@ function CommentaryList(props){
     }, [comment.id_user])
 
     return(
-        <div className='post'>
+        <div className='comment'>
             <div className='user-info'>
             <div className='avatar-container'>
                 <img className='avatar' src={user.avatar} alt='avatar'></img>
@@ -31,7 +32,7 @@ function CommentaryList(props){
                 </div>
             </div>
             </div>
-            <div className='post-content'>
+            <div className='comment-content'>
                 {comment.comment}
             </div>
         </div>

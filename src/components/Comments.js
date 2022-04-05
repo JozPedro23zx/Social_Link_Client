@@ -39,7 +39,7 @@ function Comments(){
     }
 
     return(
-        <div>
+        <div className='commentary'>
             <div>
                 <PostBox likeList={likeList} post={post} handleClick={Like} />    
             </div>
