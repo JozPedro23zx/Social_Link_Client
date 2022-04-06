@@ -31,7 +31,6 @@ function PostBox(props){
     
     var likeIcon = isLike ? true_like : default_like
 
-    console.log(user)
     const date = new Date(`${post.date}`)
     return(
         <div className='post'>

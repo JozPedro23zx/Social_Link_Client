@@ -4,8 +4,6 @@ import {useEffect, useState} from 'react'
 function ProfileInfo(props){
     const user = props.user
     const posts = props.posts
-
-    console.log(user.avatar)
     return(
         <div className='profile'>
             <div className='profileHeader'>
