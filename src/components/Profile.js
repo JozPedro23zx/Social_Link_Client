@@ -1,65 +1,38 @@
 import { useParams } from 'react-router-dom'
-import UsersDatabase from '../dataBase/users.json'
-import PostsDatabase from '../dataBase/usersPost.json'
-import PostBox from './sub-components/postBox'
+import { useState, useEffect } from 'react'
+
+import ProfileInfo from './sub-components/profileInfo'
 import '../customStyles/Profile.css'
 
 function Profile() {
     const { userId } = useParams()
-    var userContent = ""
+    const [user, setUser] = useState(null)
+    const [posts, setPosts] = useState([])
 
-    UsersDatabase.some(user =>{
-        
-        if(user.id === userId){
-            const avatarImage = {
-                background: `url(${user.avatar})`,
-                backgroundSize: "cover"
+
+    useEffect(() =>{
+        const fetchItems = async () =>{
+            try{
+                let dataUser = await fetch(`http://sociallinkserver.herokuapp.com/getUser/${userId}`)
+                let user = await dataUser.json()
+                setUser(user.data)
+
+                let dataPosts = await fetch(`http://sociallinkserver.herokuapp.com/getAllPostsOfUser/${userId}`)
+                let posts = await dataPosts.json()
+                setPosts(posts.data)
+            }catch(err){
+                console.log(err)
             }
-
-            userContent = (
-                <div className='profile'>
-                    <div className='profileHeader'>
-                        <div className='profileInfo'>
-                            <div className='avatar-container'>
-                                <div className='avatar' style={avatarImage}></div>
-                            </div>
-                            <h2>{user.name}</h2>
-                        </div>
-                    </div>
-                    <hr></hr>
-                    <div className='allPost'>
-                        <AllPost id={user.id}/>
-                    </div>
-                </div>
-            )
         }
-    })
-
-    return(
-        <div>
-            {userContent ? userContent : <h1>User not found</h1>}
-        </div>
-    )
-}
-
-function AllPost(props){
-    var allPost = PostsDatabase.map(postData =>{
-        if(postData.id === props.id){
-            return postData
-        }
-    })
-
-    allPost = allPost.filter(function(element){
-        return element !== undefined
-    })
-
-    return(
-        allPost.map(userData =>(
-            <div>
-                <PostBox user={userData} />    
-            </div>
-        ))
-    )
+        (async () => await fetchItems())()
+    }, [userId])
+    
+    if(user === null){
+        return <h2>User not found</h2>
+    }
+    else{
+        return <ProfileInfo user={user} posts={posts}/>
+    }
 }
 
 export default Profile
