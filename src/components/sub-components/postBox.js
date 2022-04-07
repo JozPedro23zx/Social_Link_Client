@@ -40,7 +40,7 @@ function PostBox(props){
             </div>
             <div className='user-info-right'>
                 <div className='user-name'>
-                    <Link to={`profile/${post.id_user}`}><span className='fake-link'>{user.name}</span></Link>
+                    <Link to={{pathname: `/profile/${user.id_user}`}}><span className='fake-link'>{user.name}</span></Link>
                 </div>
             </div>
             </div>
@@ -55,7 +55,7 @@ function PostBox(props){
 
             <div className='bottom-buttons'>
                 <div onClick={() => incrementLike(post.id_post, isLike)} className='like'><img src={likeIcon} alt={"Like button"}></img> {likes}</div>
-                <Link to={`post/${post.id_post}`}><img src={comment}lt={"Comment button"} alt={"Comment button"}></img></Link>
+                <Link to={`/post/${post.id_post}`}><img src={comment}lt={"Comment button"} alt={"Comment button"}></img></Link>
             </div>
         </div>
     )
