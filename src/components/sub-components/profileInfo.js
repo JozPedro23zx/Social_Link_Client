@@ -9,7 +9,7 @@ function ProfileInfo(props){
             <div className='profileHeader'>
                 <div className='profileInfo'>
                     <div className='avatar-container'>
-                        <img className='avatar' src={user.avatar}></img>
+                        <img className='avatar' alt='avatar' src={user.avatar}></img>
                     </div>
                     <h2>{user.name}</h2>
                 </div>
@@ -27,7 +27,7 @@ function AllPost(props){
     useEffect(() =>{
         const fetchItems = async () =>{
             try{
-                const dataLikes = await fetch('https://sociallinkserver.herokuapp.com/getLikeList')
+                const dataLikes = await fetch(`${process.env.REACT_APP_API}/getLikeList`)
                 const likes = await dataLikes.json()
                 setArray(likes.likes)
             }catch(err){

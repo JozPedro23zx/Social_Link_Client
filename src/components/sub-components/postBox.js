@@ -11,6 +11,9 @@ function PostBox(props){
     const post = props.post
     const likeList = props.likeList
 
+    console.log(likeList)
+
+
     var isLike = likeList.some(element => element === post.id_post)
     const [likes, setLikesCount] = useState()
     const [user, setUser] = useState([])
@@ -18,7 +21,7 @@ function PostBox(props){
     useEffect(() => {
         const fetchItems = async () =>{
             try{
-                const dataUser = await fetch(`http://sociallinkserver.herokuapp.com/getUser/${post.id_user}`)
+                const dataUser = await fetch(`${process.env.REACT_APP_API}/getUser/${post.id_user}`)
                 const user = await dataUser.json()
                 setUser(user.data)
             }catch(err){
@@ -62,6 +65,7 @@ function PostBox(props){
 
 
     async function incrementLike(postId, isLike){
+        console.log("Increment Like")
         try{
             const requestOptions = {
                 method: 'POST',
@@ -74,8 +78,9 @@ function PostBox(props){
                     })
             };
     
-            var response = await fetch('https://sociallinkserver.herokuapp.com/changeLikeList', requestOptions)
+            var response = await fetch(`${process.env.REACT_APP_API}/changeLikeList`, requestOptions)
             var data = await response.json()
+            console.log(data)
             props.handleClick(data)
 
         }catch(err){console.log(err)}

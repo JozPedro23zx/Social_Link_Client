@@ -14,15 +14,15 @@ function Comments(){
     useEffect(() =>{
         const fetchItems = async () =>{
             try{
-                const response = await fetch(`https://sociallinkserver.herokuapp.com/getPost/${postId}`)
+                const response = await fetch(`${process.env.REACT_APP_API}/getPost/${postId}`)
                 const dataPost  = await response.json()
                 setPost(dataPost)
                 
-                const dataLikes = await fetch('https://sociallinkserver.herokuapp.com/getLikeList')
+                const dataLikes = await fetch(`${process.env.REACT_APP_API}/getLikeList`)
                 const likes = await dataLikes.json()
                 setList(likes.likes)
 
-                const dataComments = await fetch(`https://sociallinkserver.herokuapp.com/getComments/${postId}`)
+                const dataComments = await fetch(`${process.env.REACT_APP_API}/getComments/${postId}`)
                 const comments = await dataComments.json()
                 console.log(comments)
                 setComments(comments)

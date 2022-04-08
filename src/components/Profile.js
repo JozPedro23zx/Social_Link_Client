@@ -13,11 +13,11 @@ function Profile() {
     useEffect(() =>{
         const fetchItems = async () =>{
             try{
-                let dataUser = await fetch(`http://sociallinkserver.herokuapp.com/getUser/${userId}`)
+                let dataUser = await fetch(`${process.env.REACT_APP_API}/getUser/${userId}`)
                 let user = await dataUser.json()
                 setUser(user.data)
 
-                let dataPosts = await fetch(`http://sociallinkserver.herokuapp.com/getAllPostsOfUser/${userId}`)
+                let dataPosts = await fetch(`${process.env.REACT_APP_API}/getAllPostsOfUser/${userId}`)
                 let posts = await dataPosts.json()
                 setPosts(posts.data)
             }catch(err){

@@ -10,7 +10,7 @@ function CommentaryList(props){
     useEffect(() => {
         const fetchItems = async () =>{
             try{
-                const dataUser = await fetch(`http://sociallinkserver.herokuapp.com/getUser/${comment.id_user}`)
+                const dataUser = await fetch(`${process.env.REACT_APP_API}/getUser/${comment.id_user}`)
                 const user = await dataUser.json()
                 setUser(user.data)
             }catch(err){
