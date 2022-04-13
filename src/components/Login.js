@@ -12,26 +12,51 @@ function Login(){
     return(
         <div className="session-user">
             <div className="formulary">
-                {formulary === "Login" ? <LoginForm changeForm={changeForm}/> : <RegisterForm changeForm={changeForm}/>}
+                {formulary === "Login" ? <SingIn changeForm={changeForm}/> : <SingUp changeForm={changeForm}/>}
             </div>
         </div>
     )
 }
 
-function LoginForm(props){
+function SingIn(props){
+    const [mistake, setMistake] = useState("")
+
+    async function verify(){
+        let username = document.getElementById('username').value
+        let password = document.getElementById('password').value
+        try{
+                const requestOptions={
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username,
+                        password
+                    })
+                }
+                let response = await fetch(`${process.env.REACT_APP_API}/login`, requestOptions)
+                let data = await response.json()
+                console.log(data)
+                setMistake(data)
+
+            }catch(err){
+                console.log(err)
+            }
+        
+    }
+
     return(
-        <form>
+        <div>
             <input type='text' className='username' name='username' placeholder="Username"></input>
             <input type='password' className='password' name='password' placeholder="Password"></input>
 
-            <button type="submit" className='button'>Login</button>
+            <button onClick={() => verify()} className='button'>Login</button>
             <p onClick={() => props.changeForm()}>Register</p>
-            <p className='alert-error'></p>
-        </form>
+            <p className='alert-error'>{mistake}</p>
+        </div>
     )
 }
 
-function RegisterForm(props){
+function SingUp(props){
     const [mistake, setMistake] = useState("")
 
     async function verify(){
