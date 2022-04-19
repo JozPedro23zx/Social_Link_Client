@@ -6,11 +6,27 @@ import Profile from './components/Profile'
 import Chat from './components/Chat'
 import Comments from './components/Comments';
 import Login from './components/Login';
+import { useEffect, useState } from 'react';
+import Axios from "axios";
+
 
 function App() {
-  const variavel = 0
+  const [isAuth, setAuth] = useState(0)
 
-  if(variavel === 1){
+  useEffect(() =>{
+    function createAuth(){
+      Axios({
+        method: "GET",
+        withCredentials: true,
+        url: "http://localhost:8000/user",
+      }).then((res) => {
+        setAuth(res.data);
+      });
+    }(() => createAuth())()
+  }, [])
+
+  
+  if(isAuth){
     return (
       <div className='main'>
         <BrowserRouter>

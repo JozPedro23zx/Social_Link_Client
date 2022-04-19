@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import Axios from "axios";
 
-function Login(){
+
+function Login(props){
     const [formulary, setForm] = useState("Login")
 
     function changeForm(){
@@ -12,42 +14,36 @@ function Login(){
     return(
         <div className="session-user">
             <div className="formulary">
-                {formulary === "Login" ? <SingIn changeForm={changeForm}/> : <SingUp changeForm={changeForm}/>}
+                {formulary === "Login" ? <SignIn changeForm={changeForm} /> : <SignUp changeForm={changeForm}/>}
             </div>
         </div>
     )
 }
 
-function SingIn(props){
+function SignIn(props){
     const [mistake, setMistake] = useState("")
 
     async function verify(){
         let username = document.getElementById('username').value
         let password = document.getElementById('password').value
-        try{
-                const requestOptions={
-                    method: "POST",
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        username,
-                        password
-                    })
-                }
-                let response = await fetch(`${process.env.REACT_APP_API}/login`, requestOptions)
-                let data = await response.json()
-                console.log(data)
-                setMistake(data)
-
-            }catch(err){
-                console.log(err)
-            }
+        Axios({
+            method: "POST",
+            data: {
+              username: username,
+              password: password,
+            },
+            withCredentials: true,
+            url: "http://localhost:8000/login",
+          }).then((res) => {
+              setMistake(res.data)
+          });
         
     }
 
     return(
         <div>
-            <input type='text' className='username' name='username' placeholder="Username"></input>
-            <input type='password' className='password' name='password' placeholder="Password"></input>
+            <input type='text' className='username' id='username' placeholder="Username"></input>
+            <input type='password' className='password' id='password' placeholder="Password"></input>
 
             <button onClick={() => verify()} className='button'>Login</button>
             <p onClick={() => props.changeForm()}>Register</p>
@@ -56,7 +52,7 @@ function SingIn(props){
     )
 }
 
-function SingUp(props){
+function SignUp(props){
     const [mistake, setMistake] = useState("")
 
     async function verify(){
@@ -75,7 +71,6 @@ function SingUp(props){
                 }
                 let response = await fetch(`${process.env.REACT_APP_API}/registerUser`, requestOptions)
                 let data = await response.json()
-                console.log(data)
                 setMistake(data)
                 // props.changeForm()
             }catch(err){
