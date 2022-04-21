@@ -11,7 +11,6 @@ function PostBox(props){
     const post = props.post
     const likeList = props.likeList
 
-    console.log(likeList)
 
 
     var isLike = likeList.some(element => element === post.id_post)
@@ -65,7 +64,6 @@ function PostBox(props){
 
 
     async function incrementLike(postId, isLike){
-        console.log("Increment Like")
         try{
             const requestOptions = {
                 method: 'POST',
