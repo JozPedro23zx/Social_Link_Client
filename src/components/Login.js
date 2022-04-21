@@ -14,7 +14,7 @@ function Login(props){
     return(
         <div className="session-user">
             <div className="formulary">
-                {formulary === "Login" ? <SignIn changeForm={changeForm} /> : <SignUp changeForm={changeForm}/>}
+                {formulary === "Login" ? <SignIn changeForm={changeForm} currentUser={() => props.currentUser()}/> : <SignUp changeForm={changeForm}/>}
             </div>
         </div>
     )
@@ -36,7 +36,8 @@ function SignIn(props){
             url: "http://localhost:8000/login",
           }).then((res) => {
               setMistake(res.data)
-          });
+              props.currentUser()
+          }).catch(setMistake("Connection Error"));
         
     }
 
@@ -74,6 +75,7 @@ function SignUp(props){
                 setMistake(data)
                 // props.changeForm()
             }catch(err){
+                setMistake("Connection Error")
                 console.log(err)
             }
         

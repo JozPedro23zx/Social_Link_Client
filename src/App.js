@@ -12,17 +12,18 @@ import Axios from "axios";
 
 function App() {
   const [isAuth, setAuth] = useState(0)
+  function currentUser(){
+    Axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:8000/user",
+    }).then((res) => {
+      setAuth(res.data);
+    });
+  }
 
   useEffect(() =>{
-    function createAuth(){
-      Axios({
-        method: "GET",
-        withCredentials: true,
-        url: "http://localhost:8000/user",
-      }).then((res) => {
-        setAuth(res.data);
-      });
-    }(() => createAuth())()
+    currentUser()
   }, [])
 
   
@@ -49,7 +50,7 @@ function App() {
       </div>
     );
   }else{
-    return <Login />
+    return <Login currentUser={currentUser}/>
   }
 }
 
