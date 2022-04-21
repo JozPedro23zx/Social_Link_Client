@@ -80,7 +80,6 @@ function PostBox(props){
     
             var response = await fetch(`${process.env.REACT_APP_API}/changeLikeList`, requestOptions)
             var data = await response.json()
-            console.log(data)
             props.handleClick(data)
 
         }catch(err){console.log(err)}
