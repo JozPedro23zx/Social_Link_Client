@@ -1,11 +1,34 @@
 import {useState} from 'react'
 import '../../customStyles/inputBox.css'
+import Axios from "axios";
 
-function InputBox(){
+
+function InputBox(props){
     const [showPlaceholder, setPlaceholder] = useState("block")
     const [showCounter, setShowCounter] = useState("none")
     const [activeButton, setActive] = useState("no-active")
     const [counter, setCounter] = useState(100)
+
+    function tweet(){
+        let content = document.getElementById('dataContent')
+        console.log(content.innerHTML)
+        console.log(props.userId)
+
+        Axios({
+            method: 'POST',
+            data: {
+                content: content.innerHTML,
+                idUser: props.userId
+            },
+            withCredentials: true,
+            url: "http://localhost:8000/createPost",
+        }).then((res) => {
+            console.log(res.data)
+            content.innerHTML = ''
+            validate(content)
+        })
+
+    }
 
     function KeyUp(e){
         let element = e.target
@@ -43,6 +66,7 @@ function InputBox(){
                 <div className="tweet-area">
                     <span className="placeholder" style={{display: showPlaceholder}}>What's happening?</span>
                     <div 
+                        id='dataContent'
                         className="input editable" 
                         contenteditable="true" 
                         spellcheck="true"
@@ -54,7 +78,7 @@ function InputBox(){
             <div className="bottom">
                 <div className="content-button">
                     <span className="counter" style={{display: showCounter}}>{counter}</span>
-                    <button className={activeButton}>Tweet</button>
+                    <button onClick={() => tweet()} className={activeButton}>Tweet</button>
                 </div>
             </div>
         </div>

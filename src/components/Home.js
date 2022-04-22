@@ -3,7 +3,7 @@ import PostBox from './sub-components/postBox'
 import { useState, useEffect } from 'react'
 
 
-function Home() {
+function Home(props) {
     
     const [likeList, setArray] = useState([])
     const [posts, setPosts] = useState([])
@@ -34,7 +34,7 @@ function Home() {
     return(
         <div className="home">
             <div className="publication">
-                <InputBox />
+                <InputBox userId={props.userId}/>
             </div>
 
             {posts.map(postData =>(

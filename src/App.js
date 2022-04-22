@@ -11,14 +11,14 @@ import Axios from "axios";
 
 
 function App() {
-  const [isAuth, setAuth] = useState(0)
+  const [authenticateUser, setAuth] = useState(0)
   function currentUser(){
     Axios({
       method: "GET",
       withCredentials: true,
       url: "http://localhost:8000/user",
     }).then((res) => {
-      setAuth(res.data);
+      setAuth(parseInt(res.data));
     });
   }
 
@@ -27,24 +27,24 @@ function App() {
   }, [])
 
   
-  if(isAuth){
+  if(authenticateUser){
     return (
       <div className='main'>
         <BrowserRouter>
           <div className='content'>  
             <Routes>
-              <Route exact path='/' element={<Home />}/>
+              <Route exact path='/' element={<Home userId={authenticateUser}/>}/>
               
-              <Route path='/profile/:userId' element={<Profile />}/>
+              <Route path='/profile/:userId' element={<Profile userId={authenticateUser}/>}/>
   
-              <Route path='/chat' element={<Chat />}/>
+              <Route path='/chat' element={<Chat userId={authenticateUser}/>}/>
   
-              <Route path='/post/:postId' element={<Comments />}/>
+              <Route path='/post/:postId' element={<Comments userId={authenticateUser}/>}/>
             </Routes>
           </div>
           
           <div className='navbar'>
-            <Navbar />
+            <Navbar userId={authenticateUser}/>
           </div>
         </BrowserRouter>
       </div>
