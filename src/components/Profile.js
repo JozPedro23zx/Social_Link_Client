@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import ProfileInfo from './sub-components/profileInfo'
 import '../customStyles/Profile.css'
 
-function Profile() {
+function Profile(props) {
     const { userId } = useParams()
     const [user, setUser] = useState(null)
     const [posts, setPosts] = useState([])
@@ -31,7 +31,7 @@ function Profile() {
         return <h2>User not found</h2>
     }
     else{
-        return <ProfileInfo user={user} posts={posts}/>
+        return <ProfileInfo user={user} posts={posts} userId={props.userId}/>
     }
 }
 

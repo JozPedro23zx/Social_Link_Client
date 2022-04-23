@@ -12,7 +12,6 @@ function PostBox(props){
     const likeList = props.likeList
 
 
-
     var isLike = likeList.some(element => element === post.id_post)
     const [likes, setLikesCount] = useState()
     const [user, setUser] = useState([])
@@ -70,7 +69,7 @@ function PostBox(props){
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(
                     { 
-                        idUser: 5,
+                        idUser: props.userId,
                         postId,
                         isLike,
                     })

@@ -4,7 +4,7 @@ import CommentaryBox from './sub-components/commentaryBox'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
-function Comments(){
+function Comments(props){
     const { postId } = useParams()
     const [post, setPost] = useState([])
     const [likeList, setList] = useState([])
@@ -18,7 +18,7 @@ function Comments(){
                 const dataPost  = await response.json()
                 setPost(dataPost)
                 
-                const dataLikes = await fetch(`${process.env.REACT_APP_API}/getLikeList`)
+                const dataLikes = await fetch(`${process.env.REACT_APP_API}/getLikeList/${props.userId}`)
                 const likes = await dataLikes.json()
                 setList(likes.likes)
 
@@ -31,7 +31,7 @@ function Comments(){
             }
         }
         (async () => await fetchItems())()
-    }, [postId])
+    }, [postId, props.userId])
 
         
 
@@ -42,8 +42,8 @@ function Comments(){
     return(
         <div className='commentary'>
             <div>
-                <PostBox likeList={likeList} post={post} handleClick={Like} />    
-                <CommentaryBox />
+                <PostBox likeList={likeList} post={post} handleClick={Like} userId={props.userId} />    
+                <CommentaryBox userId={props.userId} postId={postId}/>
             </div>
             {commentList.map(commentData =>(
                 <div>

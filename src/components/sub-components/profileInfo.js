@@ -16,7 +16,7 @@ function ProfileInfo(props){
             </div>
             <hr></hr>
             <div className='allPost'>
-                <AllPost posts={posts}/>
+                <AllPost posts={posts} userId={props.userId}/>
             </div>
         </div>
     )
@@ -27,7 +27,7 @@ function AllPost(props){
     useEffect(() =>{
         const fetchItems = async () =>{
             try{
-                const dataLikes = await fetch(`${process.env.REACT_APP_API}/getLikeList`)
+                const dataLikes = await fetch(`${process.env.REACT_APP_API}/getLikeList/${props.userId}`)
                 const likes = await dataLikes.json()
                 setArray(likes.likes)
             }catch(err){
@@ -46,7 +46,7 @@ function AllPost(props){
         return(
             posts.map(postData =>(
                 <div>
-                    <PostBox likeList={likeList} post={postData} handleClick={Like} />    
+                    <PostBox likeList={likeList} post={postData} handleClick={Like} userId={props.userId}/>    
                 </div>
             ))
         )

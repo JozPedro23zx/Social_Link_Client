@@ -15,7 +15,7 @@ function Home(props) {
                 const posts = await dataPosts.json()
                 setPosts(posts.data)
 
-                const dataLikes = await fetch(`${process.env.REACT_APP_API}/getLikeList`)
+                const dataLikes = await fetch(`${process.env.REACT_APP_API}/getLikeList/${props.userId}`)
                 const likes = await dataLikes.json()
                 setArray(likes.likes)
             }catch(err){
@@ -39,7 +39,7 @@ function Home(props) {
 
             {posts.map(postData =>(
                 <div>
-                    <PostBox likeList={likeList} post={postData} handleClick={Like} />    
+                    <PostBox likeList={likeList} post={postData} handleClick={Like} userId={props.userId} />    
                 </div>
             ))}
         </div>
