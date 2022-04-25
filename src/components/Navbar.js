@@ -15,6 +15,9 @@ function Navbar(props){
           <li>
             <Link to="/chat"><p className='link'>Chat</p></Link>
           </li>
+          <li>
+            <a href={`${process.env.REACT_APP_API}/logout`}><p className='link'>Logout</p></a>
+          </li>
         </ul>
       </div>
     )
