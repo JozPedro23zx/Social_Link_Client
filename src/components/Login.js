@@ -73,7 +73,7 @@ function SignUp(props){
                 let response = await fetch(`${process.env.REACT_APP_API}/registerUser`, requestOptions)
                 let data = await response.json()
                 setMistake(data)
-                // props.changeForm()
+                props.changeForm()
             }catch(err){
                 setMistake("Connection Error")
                 console.log(err)
