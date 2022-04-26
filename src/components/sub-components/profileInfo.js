@@ -1,6 +1,9 @@
 import PostBox from './postBox'
 import {useEffect, useState} from 'react'
 
+import {Link} from 'react-router-dom'
+
+
 function ProfileInfo(props){
     const user = props.user
     const posts = props.posts
@@ -15,6 +18,10 @@ function ProfileInfo(props){
                 </div>
             </div>
             <hr></hr>
+            <div>
+                {/* <Link to={"#"}> <p>Talk</p> </Link> */}
+                <Link to="/settings"> <p>Settings</p> </Link>
+            </div>
             <div className='allPost'>
                 <AllPost posts={posts} userId={props.userId}/>
             </div>
@@ -35,7 +42,7 @@ function AllPost(props){
             }
         }
         (async () => await fetchItems())()
-    }, [])
+    }, [props.userId])
 
     async function Like(newLikeList){
         setArray(newLikeList)
