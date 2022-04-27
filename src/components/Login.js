@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Axios from "axios";
 
+import '../customStyles/Login.css'
+
 
 function Login(props){
     const [formulary, setForm] = useState("Login")
@@ -12,9 +14,9 @@ function Login(props){
 
     return(
         <div className="session-user">
-            <div className="formulary">
+            
                 {formulary === "Login" ? <SignIn changeForm={changeForm} currentUser={() => props.currentUser()}/> : <SignUp changeForm={changeForm}/>}
-            </div>
+            
         </div>
     )
 }
@@ -25,7 +27,7 @@ function SignIn(props){
     async function verify(){
         let username = document.getElementById('username').value
         let password = document.getElementById('password').value
-        Axios({
+        await Axios({
             method: "POST",
             data: {
               username: username,
@@ -36,18 +38,18 @@ function SignIn(props){
           }).then((res) => {
               setMistake(res.data)
               props.currentUser()
-          }).catch(setMistake("Connection Error"));
+          }).catch((err) => console.log(err));
         
     }
 
     return(
-        <div>
+        <div  className="formulary">
+            <p className='alert-error'>{mistake}</p>
             <input type='text' className='username' id='username' placeholder="Username"></input>
             <input type='password' className='password' id='password' placeholder="Password"></input>
 
             <button onClick={() => verify()} className='button'>Login</button>
-            <p onClick={() => props.changeForm()}>Register</p>
-            <p className='alert-error'>{mistake}</p>
+            <p>Not have account?<span onClick={() => props.changeForm()}>Sign Up here!</span></p>
         </div>
     )
 }
@@ -72,23 +74,21 @@ function SignUp(props){
                 let response = await fetch(`${process.env.REACT_APP_API}/registerUser`, requestOptions)
                 let data = await response.json()
                 setMistake(data)
-                props.changeForm()
-            }catch(err){
-                setMistake("Connection Error")
-                console.log(err)
-            }
+                console.log(data)
+                if(data === ['']) props.changeForm()
+            }catch(err){console.log(err)}
         
     }
 
     return(
-        <div>
+        <div  className="formulary">
+            <p className='alert-error'>{mistake}</p>
             <input type='text' className='username' id='username' placeholder="Username"></input>
             <input type='password' className='password' id='password' placeholder="Password"></input>
             <input type='password' className='passwordRepeat' id='passwordRepeat' placeholder="Confirm Password"></input>
 
             <button onClick={() => verify()} className='button'>Sing up</button>
-            <p onClick={() => props.changeForm()}>Login</p>
-            <p className='alert-error'>{mistake}</p>
+            <p>Go <span onClick={() => props.changeForm()}>Sign In</span> page to make a login </p>
         </div>
     )
 }
