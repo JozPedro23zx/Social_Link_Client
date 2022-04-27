@@ -5,8 +5,6 @@ function CommentaryList(props){
     const comment = props.post
     const [user, setUser] = useState([])
 
-    console.log(comment)
-
     useEffect(() => {
         const fetchItems = async () =>{
             try{

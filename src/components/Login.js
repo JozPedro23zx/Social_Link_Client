@@ -6,7 +6,6 @@ function Login(props){
     const [formulary, setForm] = useState("Login")
 
     function changeForm(){
-        console.log("Change Formulary")
         if (formulary === "Login") setForm("Register")
         else if(formulary === "Register") setForm("Login")
     }

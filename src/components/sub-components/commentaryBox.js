@@ -6,9 +6,7 @@ function CommentaryBox(props){
 
     function comment(){
         let content = document.getElementById("inputText")
-        console.log(content.value)
-        console.log(props.userId)
-        console.log(props.postId)
+
 
         Axios({
             method: 'POST',
@@ -20,7 +18,6 @@ function CommentaryBox(props){
             withCredentials: true,
             url: "http://localhost:8000/createComment",
         }).then((res) => {
-            console.log(res.data)
             content.value = ''
         })
     }

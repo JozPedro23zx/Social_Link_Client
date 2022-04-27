@@ -6,10 +6,19 @@ import Axios from "axios";
 
 function Settings(){
     const [imageSelected, setImage] = useState('')
+
+    function preview_image(event){
+        var reader = new FileReader()
+        reader.onload = ()=>{
+            var output = document.getElementById('output_image')  
+            output.src = reader.result
+        } 
+        reader.readAsDataURL(event.target.files[0])
+        setImage(event.target.files[0])
+    }
     
     const [screen, setScreen] = useState("close")
     function modalScreen(state){
-        console.log(state)
         setScreen(state)
     }
 
@@ -21,7 +30,9 @@ function Settings(){
                 <p>Password</p>
                 <input id="password" type='password'></input>
                 <p>Avatar</p>
-                <input id="avatar" type='file' onChange={(event) => setImage(event.target.files[0])}></input>
+                <input id="avatar" type='file' accept="image/*" onChange={(event) => preview_image(event)}></input>
+                <br></br>
+                <img id="output_image" />
                 <br></br>
                 <button onClick={() => modalScreen("open")}>Change</button>
             </div>
@@ -66,13 +77,11 @@ function Modal(props){
         let passwordConfirm = document.getElementById('checkPassword')
         
         if(imageSelected === ''){
-            console.log("Oi")
             sendData(username, password, passwordConfirm, imageSelected)
         }else{
             const formData = new FormData()
             formData.append("file", imageSelected)
             formData.append("upload_preset", "ruga5ft5")
-            console.log(formData)
 
             Axios.post("https://api.cloudinary.com/v1_1/dhuy2dkhc/image/upload", formData)
             .then((response) =>{

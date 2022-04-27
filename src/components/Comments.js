@@ -24,7 +24,6 @@ function Comments(props){
 
                 const dataComments = await fetch(`${process.env.REACT_APP_API}/getComments/${postId}`)
                 const comments = await dataComments.json()
-                console.log(comments)
                 setComments(comments)
             }catch(err){
                 console.log(err)

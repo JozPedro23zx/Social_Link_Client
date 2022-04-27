@@ -11,8 +11,7 @@ function InputBox(props){
 
     function tweet(){
         let content = document.getElementById('dataContent')
-        console.log(content.innerHTML)
-        console.log(props.userId)
+
 
         Axios({
             method: 'POST',
@@ -23,7 +22,6 @@ function InputBox(props){
             withCredentials: true,
             url: "http://localhost:8000/createPost",
         }).then((res) => {
-            console.log(res.data)
             content.innerHTML = ''
             validate(content)
         })
