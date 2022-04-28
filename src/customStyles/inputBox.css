@@ -72,3 +72,14 @@
   .bottom button:hover{
     background: #0d8bd9;
   }
+
+  .bottom .file-upload{
+    margin-left: -70px;
+    margin-right: 180px;
+
+    cursor: pointer;
+  }
+
+  .bottom input[type="file"]{
+    display: none;
+  }

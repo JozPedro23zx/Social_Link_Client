@@ -8,13 +8,16 @@ import {useState, useEffect} from 'react'
 
 
 function PostBox(props){
+    const [likes, setLikesCount] = useState()
+    const [user, setUser] = useState([])
+
     const post = props.post
     const likeList = props.likeList
 
-
     var isLike = likeList.some(element => element === post.id_post)
-    const [likes, setLikesCount] = useState()
-    const [user, setUser] = useState([])
+    var likeIcon = isLike ? true_like : default_like
+    const date = new Date(`${post.date}`)
+
 
     useEffect(() => {
         const fetchItems = async () =>{
@@ -30,9 +33,7 @@ function PostBox(props){
         setLikesCount(post.likes)
     }, [post.likes, post.id_user])
     
-    var likeIcon = isLike ? true_like : default_like
 
-    const date = new Date(`${post.date}`)
     return(
         <div className='post'>
             <div className='user-info'>
@@ -49,6 +50,8 @@ function PostBox(props){
             <div className='post-content'>
                 {post.content}
             </div>
+
+            <ImageContainer post={post} />
 
             <div className='metadata'>
                 {`${date.getDate()}/${(date.getUTCMonth()+1)}/${date.getFullYear()}`}
@@ -78,14 +81,23 @@ function PostBox(props){
             var response = await fetch(`${process.env.REACT_APP_API}/changeLikeList`, requestOptions)
             var data = await response.json()
             props.handleClick(data)
-
         }catch(err){console.log(err)}
-
-
         setLikesCount(isLike ? likes - 1 : likes + 1)
-
     }
 }
+
+function ImageContainer(props){
+    if(props.post.image){
+        return(
+            <div className="image-container">
+                <img src={props.post.image} alt=""/>
+            </div>
+        )
+    }else{
+        return <></>
+    }
+}
+
 
 
 export default PostBox
