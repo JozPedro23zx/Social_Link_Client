@@ -8,7 +8,8 @@ ul{
 }
 
 body{
-    background-color: rgb(224, 224, 224);
+    background-color: #fff
+    /* background-color: rgb(224, 224, 224); */
 }
 
 a{
@@ -30,7 +31,8 @@ a{
 
 .navbar, .content{
     border: 1px solid rgb(114, 114, 114);  
-    background-color: rgb(238, 231, 231);
+    background-color: #f0f2f5
+    /* background-color: rgb(238, 231, 231); */
 }
 
 .home{

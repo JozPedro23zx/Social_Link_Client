@@ -114,7 +114,7 @@ function InputBox(props){
                         Upload Image
                     </label>
                     <span className="counter" style={{display: showCounter}}>{counter}</span>
-                    <button onClick={() => tweet()} className={activeButton}>Tweet</button>
+                    <button onClick={() => tweet()} className={activeButton}>Publish</button>
                 </div>
             </div>
         </div>
