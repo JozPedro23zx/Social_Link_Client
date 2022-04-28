@@ -4,7 +4,7 @@ import '../customStyles/Navbar.css'
 function Navbar(props){
     return(
       <div className='options'>
-        <input type="search"></input>
+        <input type="search" onChange={(event) => props.searchPost(event)}></input>
         <ul>
           <li>
             <Link to="/"><p className='link'>Home</p></Link>

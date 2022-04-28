@@ -14,6 +14,8 @@ import Settings from './components/Settings'
 
 function App() {
   const [authenticateUser, setAuth] = useState(0)
+  const [postContent, setPostContent] = useState('empty')
+
   function currentUser(){
     Axios({
       method: "GET",
@@ -28,6 +30,10 @@ function App() {
     currentUser()
   }, [])
 
+  function searchPost(dataSearch){
+    console.log(dataSearch.target.value)
+    setPostContent(dataSearch.target.value)
+  }
   
   if(authenticateUser){
     return (
@@ -35,7 +41,7 @@ function App() {
         <BrowserRouter>
           <div className='content'>  
             <Routes>
-              <Route exact path='/' element={<Home userId={authenticateUser} />} />
+              <Route exact path='/' element={<Home userId={authenticateUser} postContent={postContent}/>} />
               
               <Route path='/profile/:userId' element={<Profile userId={authenticateUser} />} />
   
@@ -48,7 +54,7 @@ function App() {
           </div>
           
           <div className='navbar'>
-            <Navbar userId={authenticateUser}/>
+            <Navbar userId={authenticateUser} searchPost={searchPost}/>
           </div>
         </BrowserRouter>
       </div>

@@ -9,9 +9,11 @@ function Home(props) {
     const [posts, setPosts] = useState([])
     
     useEffect(() =>{
+        let search = props.postContent || 'empty'
+        console.log(search)
         const fetchItems = async () =>{
             try{
-                const dataPosts = await fetch(`${process.env.REACT_APP_API}/getAllPosts`)
+                const dataPosts = await fetch(`${process.env.REACT_APP_API}/getAllPosts/${search}`)
                 const posts = await dataPosts.json()
                 setPosts(posts.data)
 
@@ -23,7 +25,7 @@ function Home(props) {
             }
         }
         (async () => await fetchItems())()
-    }, [])
+    }, [props.postContent])
     
     
     
