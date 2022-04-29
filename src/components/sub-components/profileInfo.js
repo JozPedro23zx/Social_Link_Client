@@ -18,7 +18,7 @@ function ProfileInfo(props){
                 </div>
             </div>
             <hr></hr>
-            <div>
+            <div className='buttons'>
                 {/* <Link to={"#"}> <p>Talk</p> </Link> */}
                 <Link to="/settings"> <p>Settings</p> </Link>
             </div>

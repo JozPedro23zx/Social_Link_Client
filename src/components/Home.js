@@ -8,9 +8,9 @@ function Home(props) {
     const [likeList, setArray] = useState([])
     const [posts, setPosts] = useState([])
     
-    const fetchItems = async () =>{
-        let search = props.postContent || 'empty'
-        console.log(search)
+    const fetchItems = async (postContent) =>{
+        let search = postContent ? postContent : 'empty'
+        console.log(postContent)
 
         try{
             const dataPosts = await fetch(`${process.env.REACT_APP_API}/getAllPosts/${search}`)
@@ -29,15 +29,14 @@ function Home(props) {
     useEffect(() =>{
         fetchItems()
     }, [])
+
     
-    
-    
-    async function Like(newLikeList){
-        setArray(newLikeList)
-    }
+    function Like(newLikeList){setArray(newLikeList)}
 
     return(
         <div className="home">
+        <input className='search-input' type="search" onChange={(event) => fetchItems(event.target.value)} placeholder="Search"></input>
+
             <div className="publication">
                 <InputBox userId={props.userId} fetchItems={() => fetchItems()}/>
             </div>

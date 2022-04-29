@@ -1,11 +1,12 @@
 import {useState} from 'react'
 import '../../customStyles/inputBox.css'
 import Axios from "axios";
+import imgIcon from '../../images/icon-img.png'
 
 
 function InputBox(props){
     const [showPlaceholder, setPlaceholder] = useState("block")
-    const [showCounter, setShowCounter] = useState("none")
+    
     const [activeButton, setActive] = useState("no-active")
     const [counter, setCounter] = useState(100)
 
@@ -22,7 +23,6 @@ function InputBox(props){
         setImage(event.target.files[0])
 
         setPlaceholder("none")
-        setShowCounter("block")
         setActive("active")
     }
 
@@ -78,11 +78,9 @@ function InputBox(props){
 
         if(currentLength > 0  || imageSelected !== ''){
             setPlaceholder("none")
-            setShowCounter("block")
             setActive("active")
         }else{
             setPlaceholder("block")
-            setShowCounter("none")
             setActive("no-active")
         }
 
@@ -111,9 +109,9 @@ function InputBox(props){
                 <div className="content-button">
                     <label className='file-upload'>
                         <input type='file' accept="image/*" onChange={(event) => preview_image(event)}></input>
-                        Upload Image
+                        <img src={imgIcon} />
                     </label>
-                    <span className="counter" style={{display: showCounter}}>{counter}</span>
+                    <span className="counter" >{counter}</span>
                     <button onClick={() => tweet()} className={activeButton}>Publish</button>
                 </div>
             </div>

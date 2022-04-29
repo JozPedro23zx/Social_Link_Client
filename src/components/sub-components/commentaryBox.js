@@ -27,7 +27,7 @@ function CommentaryBox(props){
     return(
         <div className="inputComment">
             <div>
-                <textarea id='inputText' ></textarea>
+                <input type="text" id='inputText' ></input>
                 <button onClick={() => comment()}>Comment</button>
             </div>
         </div>

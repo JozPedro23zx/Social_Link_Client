@@ -38,6 +38,10 @@
     position: relative;
     z-index: 5;
   }
+
+  .bottom {
+    margin-top: 4px;
+  }
   .bottom .content-button{
     display: flex;
     align-items: center;
@@ -45,7 +49,7 @@
   }
   .bottom .counter{
     color: #333;
-    display: none;
+    width: 40px;
     font-weight: 500;
     margin-right: 15px;
     padding-right: 15px;
@@ -75,7 +79,7 @@
 
   .bottom .file-upload{
     margin-left: -70px;
-    margin-right: 180px;
+    margin-right: 200px;
 
     cursor: pointer;
   }
@@ -83,3 +87,13 @@
   .bottom input[type="file"]{
     display: none;
   }
+
+  .bottom .file-upload img {
+    padding: 7px;
+    margin: auto;
+    fill: rgb(101, 119, 134);
+    height: 22px;
+    width: 27px;
+    margin-left: 4px;
+    transition: 0.2s;
+}

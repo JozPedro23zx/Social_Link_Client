@@ -3,7 +3,7 @@
     padding-left: 15px;
 }
 
-.navbar .options input, .navbar .options .link{
+.navbar .options .link{
     padding: 3px;
     margin-bottom: 10px;
     width: 70%;
@@ -14,6 +14,14 @@
     
 }
 
-.navbar .options .link :hover{
-    background-color: rgb(65, 65, 65);
+.navbar .options .link:hover{
+    background-color: rgb(214, 214, 214);
+}
+
+.navbar .options .link{
+    color: #000;
+}
+
+.navbar .options .link.exit{
+    color: rgb(235, 6, 6);
 }

@@ -42,3 +42,15 @@ a{
 .commentary {
     padding-left: 30px;
 }
+
+.search-input{
+    margin-top: 20px;
+    width: 400px;
+    height: 50px;
+    padding: 10px;
+
+    font-size: 18px;
+
+    border: 1px solid rgb(114, 114, 114);
+    border-radius: 15px;
+}

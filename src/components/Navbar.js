@@ -4,7 +4,6 @@ import '../customStyles/Navbar.css'
 function Navbar(props){
     return(
       <div className='options'>
-        <input type="search" onChange={(event) => props.searchPost(event)}></input>
         <ul>
           <li>
             <Link to="/"><p className='link'>Home</p></Link>
@@ -16,7 +15,7 @@ function Navbar(props){
             <Link to="/chat"><p className='link'>Chat</p></Link>
           </li>
           <li>
-            <a href={`${process.env.REACT_APP_API}/logout`}><p className='link'>Logout</p></a>
+            <a href={`${process.env.REACT_APP_API}/logout`}><p className='link exit'>Logout</p></a>
           </li>
         </ul>
       </div>

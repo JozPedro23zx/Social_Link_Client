@@ -23,6 +23,22 @@
     cursor: pointer;
 }
 
+.profile .buttons {
+    margin-left: 10px;
+}
+
+.profile .buttons p{
+    background-color: rgb(127, 236, 255);
+    border: 2px solid rgb(129, 129, 129);
+
+    width: 80px;
+    padding: 8px;
+    font-size: 19px;
+    font-weight: 700;
+
+    color: black;
+}
+
 .profile hr{
     margin-bottom: 40px;
 }

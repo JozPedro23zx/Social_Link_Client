@@ -44,11 +44,11 @@ function Comments(props){
                 <PostBox likeList={likeList} post={post} handleClick={Like} userId={props.userId} />    
                 <CommentaryBox userId={props.userId} postId={postId} fetchItems={() => fetchItems()}/>
             </div>
+            <div className='commentary-list'>
             {commentList.map(commentData =>(
-                <div>
                     <CommentaryList post={commentData}/>    
-                </div>
             ))}
+            </div>
         </div>
 
     )
