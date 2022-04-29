@@ -1,9 +1,16 @@
+.settings h3{
+    margin-top: 10%;
+    margin-left: 30%;
+    margin-bottom: 10px;
+    
+    color: rgb(3, 163, 3);
+}
+
 .form-settings{
     display: grid;
     width: 60%;
     padding: 10px;
     margin-left: 20%;
-    margin-top: 10%;
     margin-bottom: 20%;
 
     font-size: 20px;

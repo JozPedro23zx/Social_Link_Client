@@ -9,6 +9,10 @@ function Settings(props){
     const [imageSelected, setImage] = useState('')
     const [user, setUser] = useState('')
 
+    const [successMessage, setSuccessMessage] = useState('')
+    const [screen, setScreen] = useState("close")
+    
+    
     useEffect(() =>{
         const fetchItems = async () =>{
             try{
@@ -21,7 +25,7 @@ function Settings(props){
         }
         (async () => await fetchItems())()
     }, [props.userId])
-
+    
     function preview_image(event){
         var reader = new FileReader()
         reader.onload = ()=>{
@@ -32,13 +36,17 @@ function Settings(props){
         setImage(event.target.files[0])
     }
     
-    const [screen, setScreen] = useState("close")
     function modalScreen(state){
         setScreen(state)
     }
 
+    function showMessage(){
+        setSuccessMessage('Your data has been successfully modified')
+    }
+    
     return(
         <div className="settings">
+            <h3>{successMessage}</h3>
             <div className="form-settings">
                 <p>Name</p>
                 <input id="username" type='text'></input>
@@ -52,7 +60,7 @@ function Settings(props){
                 <br></br>
                 <button onClick={() => modalScreen("open")}>Change</button>
             </div>
-            {screen === "open" ? <Modal imageSelected={imageSelected} modalScreen={(state) => modalScreen(state)}/> : <></>}
+            {screen === "open" ? <Modal  imageSelected={imageSelected} modalScreen={(state) => modalScreen(state)} showMessage={showMessage}/> : <></>}
         </div>
     )
 }
@@ -78,7 +86,7 @@ function Modal(props){
                 props.modalScreen("close")
                 setInput("normal") 
                 setMessage(res.data)
-                alert("Your data has been successfully modified")
+                props.showMessage()
             }else{
                 passwordConfirm.value = ''
                 setInput("error") 
