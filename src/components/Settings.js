@@ -1,11 +1,26 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import '../customStyles/Modal.css'
 import '../customStyles/Settings.css'
 import Axios from "axios";
 
 
 
-function Settings(){
+function Settings(props){
     const [imageSelected, setImage] = useState('')
+    const [user, setUser] = useState('')
+
+    useEffect(() =>{
+        const fetchItems = async () =>{
+            try{
+                let dataUser = await fetch(`${process.env.REACT_APP_API}/getUser/${props.userId}`)
+                let user = await dataUser.json()
+                setUser(user.data)
+            }catch(err){
+                console.log(err)
+            }
+        }
+        (async () => await fetchItems())()
+    }, [props.userId])
 
     function preview_image(event){
         var reader = new FileReader()
@@ -23,16 +38,17 @@ function Settings(){
     }
 
     return(
-        <div>
-            <div>
+        <div className="settings">
+            <div className="form-settings">
                 <p>Name</p>
                 <input id="username" type='text'></input>
                 <p>Password</p>
                 <input id="password" type='password'></input>
-                <p>Avatar</p>
-                <input id="avatar" type='file' accept="image/*" onChange={(event) => preview_image(event)}></input>
-                <br></br>
-                <img id="output_image" />
+                <label className="avatar-upload">
+                    <input id="avatar" type='file' accept="image/*" onChange={(event) => preview_image(event)}></input>
+                    <img className="avatar" id="output_image" src={user.avatar}/>
+                    <p>Edit your avatar</p>
+                </label>
                 <br></br>
                 <button onClick={() => modalScreen("open")}>Change</button>
             </div>
