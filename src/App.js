@@ -41,7 +41,7 @@ function App() {
         <BrowserRouter>
           <div className='content'>  
             <Routes>
-              <Route exact path='/' element={<Home userId={authenticateUser} postContent={postContent} searchPost={searchPost}/>} />
+              <Route exact path='/' element={<Home userId={authenticateUser} postContent={postContent} />} />
               
               <Route path='/profile/:userId' element={<Profile userId={authenticateUser} />} />
   

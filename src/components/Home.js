@@ -8,24 +8,27 @@ function Home(props) {
     const [likeList, setArray] = useState([])
     const [posts, setPosts] = useState([])
     
-    useEffect(() =>{
+    const fetchItems = async () =>{
         let search = props.postContent || 'empty'
         console.log(search)
-        const fetchItems = async () =>{
-            try{
-                const dataPosts = await fetch(`${process.env.REACT_APP_API}/getAllPosts/${search}`)
-                const posts = await dataPosts.json()
-                setPosts(posts.data)
 
-                const dataLikes = await fetch(`${process.env.REACT_APP_API}/getLikeList/${props.userId}`)
-                const likes = await dataLikes.json()
-                setArray(likes.likes)
-            }catch(err){
-                console.log(err)
-            }
+        try{
+            const dataPosts = await fetch(`${process.env.REACT_APP_API}/getAllPosts/${search}`)
+            const posts = await dataPosts.json()
+            console.log(posts.data)
+            setPosts(posts.data)
+
+            const dataLikes = await fetch(`${process.env.REACT_APP_API}/getLikeList/${props.userId}`)
+            const likes = await dataLikes.json()
+            setArray(likes.likes)
+        }catch(err){
+            console.log(err)
         }
-        (async () => await fetchItems())()
-    }, [props.postContent])
+    }
+
+    useEffect(() =>{
+        fetchItems()
+    }, [])
     
     
     
@@ -36,7 +39,7 @@ function Home(props) {
     return(
         <div className="home">
             <div className="publication">
-                <InputBox userId={props.userId}/>
+                <InputBox userId={props.userId} fetchItems={() => fetchItems()}/>
             </div>
 
             {posts.map(postData =>(

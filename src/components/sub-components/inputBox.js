@@ -44,8 +44,8 @@ function InputBox(props){
         }
     }
 
-    function sendData(content, image){
-        Axios({
+    async function sendData(content, image){
+        await Axios({
             method: 'POST',
             data: {
                 content: content.innerHTML,
@@ -58,7 +58,7 @@ function InputBox(props){
             validate(content)
         })
 
-        props.searchPost('')
+        props.fetchItems()
     }
 
     function KeyUp(e){

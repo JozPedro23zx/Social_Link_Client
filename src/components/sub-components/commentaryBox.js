@@ -4,11 +4,11 @@ import Axios from "axios";
 
 function CommentaryBox(props){
 
-    function comment(){
+    async function comment(){
         let content = document.getElementById("inputText")
 
 
-        Axios({
+        await Axios({
             method: 'POST',
             data: {
                 content: content.value,
@@ -20,6 +20,8 @@ function CommentaryBox(props){
         }).then((res) => {
             content.value = ''
         })
+
+        props.fetchItems()
     }
 
     return(

@@ -10,8 +10,6 @@ function Comments(props){
     const [likeList, setList] = useState([])
     const [commentList, setComments] = useState([])
     
-
-    useEffect(() =>{
         const fetchItems = async () =>{
             try{
                 const response = await fetch(`${process.env.REACT_APP_API}/getPost/${postId}`)
@@ -29,8 +27,10 @@ function Comments(props){
                 console.log(err)
             }
         }
-        (async () => await fetchItems())()
-    }, [postId, props.userId])
+
+    useEffect(() =>{
+        fetchItems()
+    }, [])
 
         
 
@@ -42,7 +42,7 @@ function Comments(props){
         <div className='commentary'>
             <div>
                 <PostBox likeList={likeList} post={post} handleClick={Like} userId={props.userId} />    
-                <CommentaryBox userId={props.userId} postId={postId}/>
+                <CommentaryBox userId={props.userId} postId={postId} fetchItems={() => fetchItems()}/>
             </div>
             {commentList.map(commentData =>(
                 <div>
