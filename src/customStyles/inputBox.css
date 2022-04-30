@@ -17,6 +17,12 @@
     max-height: 170px;
     overflow-y: auto;
   }
+
+  .input-box img{
+    width: 100%;
+    height: 300px;
+  }
+
   .tweet-area::-webkit-scrollbar{
     width: 0px;
   }

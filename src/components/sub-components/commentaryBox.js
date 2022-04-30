@@ -16,7 +16,7 @@ function CommentaryBox(props){
                 idPost: parseInt(props.postId)
             },
             withCredentials: true,
-            url: "http://localhost:8000/createComment",
+            url: `${process.env.REACT_APP_API}/createComment`,
         }).then((res) => {
             content.value = ''
         })

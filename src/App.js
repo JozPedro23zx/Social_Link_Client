@@ -20,7 +20,7 @@ function App() {
     Axios({
       method: "GET",
       withCredentials: true,
-      url: "http://localhost:8000/user",
+      url: `${process.env.REACT_APP_API}/user`,
     }).then((res) => {
       setAuth(parseInt(res.data));
     });
@@ -31,7 +31,6 @@ function App() {
   }, [])
 
   function searchPost(dataSearch){
-    console.log(dataSearch.target.value)
     setPostContent(dataSearch.target.value)
   }
   

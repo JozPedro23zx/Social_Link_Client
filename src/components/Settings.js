@@ -80,7 +80,7 @@ function Modal(props){
                 passwordConfirm: passwordConfirm.value
             },
             withCredentials: true,
-            url: 'http://localhost:8000/changeUserData'
+            url: `${process.env.REACT_APP_API}/changeUserData`
         }).then((res) =>{
             if(!res.data){
                 props.modalScreen("close")

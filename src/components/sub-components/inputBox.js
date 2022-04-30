@@ -6,6 +6,7 @@ import imgIcon from '../../images/icon-img.png'
 
 function InputBox(props){
     const [showPlaceholder, setPlaceholder] = useState("block")
+    const [showImage, setShowImage] = useState('none')
     
     const [activeButton, setActive] = useState("no-active")
     const [counter, setCounter] = useState(100)
@@ -24,6 +25,7 @@ function InputBox(props){
 
         setPlaceholder("none")
         setActive("active")
+        setShowImage('block')
     }
 
     function tweet(){
@@ -38,10 +40,10 @@ function InputBox(props){
 
             Axios.post("https://api.cloudinary.com/v1_1/dhuy2dkhc/image/upload", formData)
             .then((response) =>{
-                console.log(response.data.public_id)
                 sendData(content, response.data.public_id)
             })
         }
+        setShowImage('none')
     }
 
     async function sendData(content, image){
@@ -52,7 +54,7 @@ function InputBox(props){
                 imageId: image
             },
             withCredentials: true,
-            url: "http://localhost:8000/createPost",
+            url: `${process.env.REACT_APP_API}/createPost`,
         }).then((res) => {
             content.innerHTML = ''
             validate(content)
@@ -103,7 +105,7 @@ function InputBox(props){
                         onKeyUp={(e) => KeyUp(e)}
                     ></div>
                 </div>
-                <img id="output_image"/>
+                <img id="output_image" style={{display: showImage}}/>
             </div>
             <div className="bottom">
                 <div className="content-button">

@@ -1,18 +1,18 @@
-import { useState } from "react";
-import ChatBox from "./sub-components/chatBox";
-import '../customStyles/Chat.css'
+// import { useState } from "react";
+// import ChatBox from "./sub-components/chatBox";
+// import '../customStyles/Chat.css'
 import image from '../images/coming-soon.jpg'
 
 function Chat() {
-    const [username, setUsername] = useState("");
-    const [room, setRoom] = useState("");
-    const [showChat, setShowChat] = useState(false);    
-    const joinRoom = () => {
-      if (username !== "" && room !== "") {
-        // socket.emit("join_room", room);
-        setShowChat(true);
-      }
-    };  
+    // const [username, setUsername] = useState("");
+    // const [room, setRoom] = useState("");
+    // const [showChat, setShowChat] = useState(false);    
+    // const joinRoom = () => {
+    //   if (username !== "" && room !== "") {
+    //     // socket.emit("join_room", room);
+    //     setShowChat(true);
+    //   }
+    // };  
     return (
       // <div>
       //   {!showChat ? (
@@ -39,7 +39,7 @@ function Chat() {
       //   )}
       // </div>
 
-      <img src={image} style={{width: "100%", height: "auto"}}/>
+      <img src={image} alt="coming soon" style={{width: "100%", height: "auto"}}/>
     );
 }
 

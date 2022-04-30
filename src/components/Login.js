@@ -34,7 +34,7 @@ function SignIn(props){
               password: password,
             },
             withCredentials: true,
-            url: "http://localhost:8000/login",
+            url: `${process.env.REACT_APP_API}/login`,
           }).then((res) => {
               setMistake(res.data)
               props.currentUser()
@@ -74,8 +74,7 @@ function SignUp(props){
                 let response = await fetch(`${process.env.REACT_APP_API}/registerUser`, requestOptions)
                 let data = await response.json()
                 setMistake(data)
-                console.log(data)
-                if(data === ['']) props.changeForm()
+                if(data[0] === '') props.changeForm()
             }catch(err){console.log(err)}
         
     }
