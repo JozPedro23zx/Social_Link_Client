@@ -18,7 +18,7 @@ function Settings(props){
             try{
                 let dataUser = await fetch(`${process.env.REACT_APP_API}/getUser/${props.userId}`)
                 let user = await dataUser.json()
-                setUser(user.data)
+                setUser(user)
             }catch(err){
                 console.log(err)
             }

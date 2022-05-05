@@ -1,33 +1,47 @@
 import React, { useEffect, useState } from 'react'
-// import ScrollToBottom from 'react-scroll-to-bottom'
+import Axios from 'axios'
+import ScrollToBottom from 'react-scroll-to-bottom'
 
 
-function ChatBox({socket, username, room}){
+function ChatBox({socket, roomId, userId}){
     const [currentMessage, setCurrentMessage] = useState("")
     const [messageList, setMessageList] = useState([])
 
-    // const sendMessage = async () =>{
-    //     if(currentMessage !== ""){
-    //         const messageData = {
-    //             room: room,
-    //             author: username,
-    //             message: currentMessage,
-    //             time: new Date().getHours() +
-    //                   ":" +
-    //                   new Date().getMinutes()
-    //         }
+    const sendMessage = async () =>{
+        if(currentMessage !== ""){
+            const messageData = {
+                roomId: roomId,
+                userId: userId,
+                message: currentMessage,
+                time: new Date().getHours() +
+                      ":" +
+                      new Date().getMinutes()
+            }
 
-    //         await socket.emit("send_message", messageData)
-    //         setMessageList((list) => [...list, messageData])
-    //         setCurrentMessage("")
-    //     }
-    // }
+            await socket.emit("send_message", messageData)
+            await Axios({
+                method: 'POST',
+                data: messageData,
+                withCredentials: true,
+                url: `${process.env.REACT_APP_API}/sendMessage`
+            })
+            setMessageList((list) => [...list, messageData])
+            setCurrentMessage("")
+        }
+    }
 
-    // useEffect(()=>{
-    //     socket.on("receive_message", (data) =>{
-    //         setMessageList((list) => [...list, data])
-    //     })
-    // }, [socket]) 
+    useEffect(async ()=>{
+        console.log("aaa")
+        await Axios({
+            method: 'GET',
+            url: `${process.env.REACT_APP_API}/getMessage/${roomId}`
+        }).then((res) => setMessageList(res.data))
+
+        socket.on("receive_message", (data) =>{
+            setMessageList((list) => [...list, data])
+            console.log(messageList)
+        })
+    }, [socket]) 
 
     return (
         <div className='chat-window'>
@@ -35,24 +49,23 @@ function ChatBox({socket, username, room}){
                 <p>Live Chat</p>
             </div>
             <div className='chat-body'>
-                {/* <ScrollToBottom className="message-container"> */}
+                <ScrollToBottom className="message-container">
                     {messageList.map((messageContent)=>{
                         return(
-                            <div className='message' id={username === messageContent.author ? "you" : "other"}>
+                            <div className='message' id={userId === messageContent.userId ? "you" : "other"}>
                                 <div>
                                     <div className='message-content'>
                                         <p>{messageContent.message}</p>
                                     </div>
                                     <div className='message-meta'>
                                         <p id='time'>{messageContent.time}</p>
-                                        <p id='author'>{messageContent.author}</p>
                                     </div>
                                 </div>
                             </div>
                             )
                         })                    
                     }
-                {/* </ScrollToBottom> */}
+                </ScrollToBottom>
             </div>
             <div className='chat-footer'>
                 <input 
@@ -63,11 +76,10 @@ function ChatBox({socket, username, room}){
                         (event) => setCurrentMessage(event.target.value)
                     } 
                     onKeyPress={(event) =>{
-                        // event.key === 'Enter' && sendMessage()
+                        event.key === 'Enter' && sendMessage()
                     }}
                 />
-                {/* <button onClick={sendMessage}>&#9658;</button> */}
-                <button>&#9658;</button>
+                <button onClick={sendMessage}>&#9658;</button>
             </div>
         </div>
     )

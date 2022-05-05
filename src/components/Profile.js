@@ -15,7 +15,7 @@ function Profile(props) {
             try{
                 let dataUser = await fetch(`${process.env.REACT_APP_API}/getUser/${userId}`)
                 let user = await dataUser.json()
-                setUser(user.data)
+                setUser(user)
 
                 let dataPosts = await fetch(`${process.env.REACT_APP_API}/getAllPostsOfUser/${userId}`)
                 let posts = await dataPosts.json()
@@ -31,7 +31,7 @@ function Profile(props) {
         return <h2>User not found</h2>
     }
     else{
-        return <ProfileInfo user={user} posts={posts} userId={props.userId}/>
+        return <ProfileInfo user={user} posts={posts} userAuth={props.userId}/>
     }
 }
 

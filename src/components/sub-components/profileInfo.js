@@ -1,5 +1,6 @@
 import PostBox from './postBox'
 import {useEffect, useState} from 'react'
+import Axios from 'axios'
 
 import {Link} from 'react-router-dom'
 
@@ -7,6 +8,20 @@ import {Link} from 'react-router-dom'
 function ProfileInfo(props){
     const user = props.user
     const posts = props.posts
+
+    async function talkUser(){
+        console.log(user.id_user)
+        await Axios({
+            method: 'POST',
+            data:{
+                user1: props.userAuth,
+                user2: user.id_user
+            },
+            withCredentials: true,
+            url: `${process.env.REACT_APP_API}/createRoom`
+        })
+    }
+
     return(
         <div className='profile'>
             <div className='profileHeader'>
@@ -19,11 +34,15 @@ function ProfileInfo(props){
             </div>
             <hr></hr>
             <div className='buttons'>
-                {/* <Link to={"#"}> <p>Talk</p> </Link> */}
-                <Link to="/settings"> <p>Settings</p> </Link>
+                {
+                    props.userAuth === user.id_user ? 
+                    <Link to="/settings"> <p>Settings</p> </Link> :
+                    <Link to={"/chat"}> <p onClick={() => talkUser()}>Talk</p> </Link>
+                }
+                
             </div>
             <div className='allPost'>
-                <AllPost posts={posts} userId={props.userId}/>
+                <AllPost posts={posts} userId={props.userAuth}/>
             </div>
         </div>
     )

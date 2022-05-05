@@ -24,7 +24,7 @@ function PostBox(props){
             try{
                 const dataUser = await fetch(`${process.env.REACT_APP_API}/getUser/${post.id_user}`)
                 const user = await dataUser.json()
-                setUser(user.data)
+                setUser(user)
             }catch(err){
                 console.log(err)
             }
