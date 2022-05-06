@@ -8,16 +8,13 @@ function UserChat(props){
     arrayOfId.map(id => id !== props.userId ? userId = id : '')
 
     useEffect(async () =>{
-        await Axios({
-            method: "GET",
-            url: `${process.env.REACT_APP_API}/getUser/${userId}`,
-        }).then((res)=>{
-            console.log(res.data)
-            setUser(res.data)
-        })
+        setUser(await props.selectUser(userId))
     }, [userId])
+
+    console.log(props.room)
+
     return(
-        <div onClick={()=>{props.joinRoom(props.room.id_room)}} className='avatar-container'>
+        <div onClick={()=>{props.joinRoom(props.room.id_room, user.id_user)}} className='avatar-container'>
                 <img className='avatar' src={user.avatar} alt='avatar'></img>
                 <p>{user.name}</p>
         </div>

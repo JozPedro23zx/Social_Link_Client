@@ -3,9 +3,15 @@ import Axios from 'axios'
 import ScrollToBottom from 'react-scroll-to-bottom'
 
 
-function ChatBox({socket, roomId, userId}){
+function ChatBox({socket, roomId, userId, messageList, receiveMessage, userSelected}){
     const [currentMessage, setCurrentMessage] = useState("")
-    const [messageList, setMessageList] = useState([])
+    
+    useEffect(async ()=>{
+        socket.on("receive_message", (data) =>{
+            console.log(roomId+' and '+data.roomId)
+             receiveMessage(data)
+        })
+    }, [socket]) 
 
     const sendMessage = async () =>{
         if(currentMessage !== ""){
@@ -25,28 +31,16 @@ function ChatBox({socket, roomId, userId}){
                 withCredentials: true,
                 url: `${process.env.REACT_APP_API}/sendMessage`
             })
-            setMessageList((list) => [...list, messageData])
+            receiveMessage(messageData)
             setCurrentMessage("")
         }
     }
-
-    useEffect(async ()=>{
-        console.log("aaa")
-        await Axios({
-            method: 'GET',
-            url: `${process.env.REACT_APP_API}/getMessage/${roomId}`
-        }).then((res) => setMessageList(res.data))
-
-        socket.on("receive_message", (data) =>{
-            setMessageList((list) => [...list, data])
-            console.log(messageList)
-        })
-    }, [socket]) 
+    
 
     return (
         <div className='chat-window'>
             <div className='chat-header'>
-                <p>Live Chat</p>
+                <p>{userSelected.name}</p>
             </div>
             <div className='chat-body'>
                 <ScrollToBottom className="message-container">

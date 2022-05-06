@@ -3,7 +3,6 @@ import Axios from "axios"
 
 import { useState, useEffect } from "react";
 import '../customStyles/Chat.css'
-import image from '../images/coming-soon.jpg'
 
 import ChatBox from "./sub-components/chatBox";
 import UserChat from "./sub-components/usersChat"
@@ -11,10 +10,17 @@ import UserChat from "./sub-components/usersChat"
 const socket = io.connect("http://localhost:8000")
 
 function Chat(props) {
-    const [showChat, setShowChat] = useState(false);    
+    const [showChat, setShowChat] = useState(false); 
+    const [userChat, setUser] = useState('')
+    
     const [roomsList, setRoomsList] = useState([]);
-    const [roomId, setRoomId] = useState('')
+    const [roomId, setRoomId] = useState(0)
+    const [messageList, setMessageList] = useState([])
 
+    useEffect(() =>{
+      rooms()
+    }, [])
+    
   function rooms(){
     Axios({
       method: "GET",
@@ -22,33 +28,55 @@ function Chat(props) {
       url: `${process.env.REACT_APP_API}/getAllRooms`,
     }).then((res)=>{
       setRoomsList(res.data)
-      console.log(res.data)
     })
   }
   
-  const joinRoom = (room) => {
-      setRoomId(room)
+  const joinRoom = async (room, userSelected) => {
+      if (showChat) socket.emit('leave_room', roomId)
       socket.emit("join_room", room);
+
+      await loadMessage(room)
+      setUser(await selectUser(userSelected))
+
+      setRoomId(room)
       setShowChat(true);
   };  
 
-  useEffect(() =>{
-    rooms()
-  }, [])
+  async function selectUser(userId){
+    let response = ''
+    await Axios({
+        method: "GET",
+        url: `${process.env.REACT_APP_API}/getUser/${userId}`,
+    }).then((res)=>{
+        response = res.data
+    })
+    return response
+  }
+
+  async function loadMessage(idRoom){
+    await Axios({
+        method: 'GET',
+        url: `${process.env.REACT_APP_API}/getMessage/${idRoom}`
+    }).then((res) =>{setMessageList(res.data)})
+  }
+
+  const receiveMessage = (message)=>{
+    setMessageList((list) => [...list, message])
+  }
+
 
     return (
       <div>
         <div className="chat-nav-bar">
           {roomsList.map(room =>(
-            <UserChat room={room} userId={props.userId} joinRoom={joinRoom} />
+            <UserChat room={room} userId={props.userId} joinRoom={joinRoom} selectUser={selectUser}/>
           ))}
         </div>
         <div>
-          {showChat ? <ChatBox socket={socket} roomId={roomId} userId={props.userId} /> : <></>}  
+          {showChat ? <ChatBox socket={socket} roomId={roomId} userId={props.userId} userSelected={userChat} receiveMessage={receiveMessage} messageList={messageList}/> : <></>}  
         </div>
       </div>
 
-      // <img src={image} alt="coming soon" style={{width: "100%", height: "auto"}}/>
     );
 }
 
