@@ -36,8 +36,8 @@ function ProfileInfo(props){
             <div className='buttons'>
                 {
                     props.userAuth === user.id_user ? 
-                    <Link to="/settings"> <p>Settings</p> </Link> :
-                    <Link to={"/chat"}> <p onClick={() => talkUser()}>Talk</p> </Link>
+                    <Link to="/settings"> <p className='settings-button'>Settings</p> </Link> :
+                    <Link to={"/chat"}> <p className='talk-button' onClick={() => talkUser()}>Talk</p> </Link>
                 }
                 
             </div>

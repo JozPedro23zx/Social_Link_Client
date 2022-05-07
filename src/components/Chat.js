@@ -7,7 +7,8 @@ import '../customStyles/Chat.css'
 import ChatBox from "./sub-components/chatBox";
 import UserChat from "./sub-components/usersChat"
 
-const socket = io.connect("http://localhost:8000")
+
+const socket = io.connect(`${process.env.REACT_APP_API}`)
 
 function Chat(props) {
     const [showChat, setShowChat] = useState(false); 

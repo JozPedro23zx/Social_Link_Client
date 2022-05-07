@@ -39,6 +39,14 @@
     color: black;
 }
 
+.profile .buttons .settings-button{
+    background-color: rgb(127, 236, 255);
+}
+
+.profile .buttons .talk-button{
+    background-color: rgb(127, 255, 159);
+}
+
 .profile hr{
     margin-bottom: 40px;
 }
