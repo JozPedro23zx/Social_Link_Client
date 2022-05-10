@@ -1,20 +1,30 @@
 import InputBox from './sub-components/inputBox'
 import PostBox from './sub-components/postBox'
 import { useState, useEffect } from 'react'
+import Axios from 'axios'
 
 
 function Home(props) {
     
     const [likeList, setArray] = useState([])
-    const [posts, setPosts] = useState([])
+    const [allPosts, setPosts] = useState([])
     
     const fetchItems = async (postContent) =>{
         let search = postContent ? postContent : 'empty'
+        let allIdPosts = [0]
+        allPosts.map(post => {allIdPosts.push(post.id_post)})
 
         try{
-            const dataPosts = await fetch(`${process.env.REACT_APP_API}/getAllPosts/${search}`)
-            const posts = await dataPosts.json()
-            setPosts(posts.data)
+            await Axios({
+                method: 'POST',
+                data: {allIdPosts, search},
+                withCredentials: true,
+                url: `${process.env.REACT_APP_API}/getAllPosts`
+            }).then((dataPosts)=>{
+                let postArray = [...allPosts]
+                dataPosts.data.map(post => postArray.push(post))
+                setPosts(postArray)
+            })
 
             const dataLikes = await fetch(`${process.env.REACT_APP_API}/getLikeList/${props.userId}`)
             const likes = await dataLikes.json()
@@ -39,11 +49,16 @@ function Home(props) {
                 <InputBox userId={props.userId} fetchItems={() => fetchItems()}/>
             </div>
 
-            {posts.map(postData =>(
+            {allPosts.map(postData =>(
                 <div>
                     <PostBox likeList={likeList} post={postData} handleClick={Like} userId={props.userId} />    
                 </div>
             ))}
+
+            <div className='load-posts' onClick={() => fetchItems()}>
+                <p>View more</p>
+                <hr></hr>
+            </div>
         </div>
     )
 }
