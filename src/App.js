@@ -3,6 +3,19 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Axios from "axios";
 
 import './customStyles/App.css';
+import './customStyles/Navbar.css'
+import './customStyles/Chat.css'
+import './customStyles/Login.css'
+import './customStyles/Profile.css'
+import './customStyles/Modal.css'
+import './customStyles/Settings.css'
+import './customStyles/commentaryBox.css'
+import './customStyles/commentaryList.css'
+import './customStyles/inputBox.css'
+import './customStyles/postBox.css'
+
+
+// import './customStyles/responsive.css';
 
 import Navbar from './components/Navbar';
 import Home from './components/Home'

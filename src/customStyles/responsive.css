@@ -1,0 +1,83 @@
+@media (max-width: 5500px){
+    *{
+        overflow-x:hidden;
+    }
+
+    /* Login */
+    .formulary{
+        font-size: 18px;
+    
+        margin-top: 5rem;
+        margin-left: 3.5%;
+    
+        padding-top: 10px;
+        padding-bottom: 10px;
+    
+        width: 300px;
+        height: 400px;
+    }
+
+    .formulary input, .formulary button{
+        font-size: 18px;
+    
+        margin-left: 13%;
+    
+        width: 70%;
+        height: 55px;
+        padding:.5px;
+        margin-bottom: 2px;
+    }
+
+    /* Main */
+    .main{
+        display: grid;
+        margin-left: 0;
+    }
+
+    .content{
+        width: 100%;
+    }
+
+    /* Navbar */
+    .navbar{
+        width: 100%; 
+        position: fixed;
+
+        bottom: 0;
+    }
+
+    .navbar .options{
+        padding-top: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .navbar .options ul{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .navbar .options .link{
+        padding: 3px;
+        margin-bottom: 10px;
+        width: 60px;
+        
+        border: 2px solid rgb(126, 126, 126);
+        border-radius: 0;
+        font-size: 19px;        
+    }
+
+    /* Home */
+    .home{
+        width: 100%;
+    }
+
+    .home .wrapper{
+        background: #fff;
+        width: 100%;
+        border-radius: 15px;
+        padding: 25px 25px 15px 25px;
+        box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+        margin-top: 20px;
+    }
+}

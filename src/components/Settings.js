@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
-import '../customStyles/Modal.css'
-import '../customStyles/Settings.css'
+
 import Axios from "axios";
 
 

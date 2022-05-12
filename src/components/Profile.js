@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 import ProfileInfo from './sub-components/profileInfo'
-import '../customStyles/Profile.css'
 
 function Profile(props) {
     const { userId } = useParams()

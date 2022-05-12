@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Axios from "axios";
 
-import '../customStyles/Login.css'
 
 
 function Login(props){

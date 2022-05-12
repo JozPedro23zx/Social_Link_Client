@@ -1,6 +1,5 @@
 .wrapper{
     background: #fff;
-    max-width: 475px;
     width: 100%;
     border-radius: 15px;
     padding: 25px 25px 15px 25px;
@@ -84,7 +83,7 @@
   }
 
   .bottom .file-upload{
-    margin-left: -70px;
+    margin-left: 0;
     margin-right: 200px;
 
     cursor: pointer;

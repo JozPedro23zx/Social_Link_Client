@@ -1,5 +1,4 @@
 import {useState} from 'react'
-import '../../customStyles/inputBox.css'
 import Axios from "axios";
 import imgIcon from '../../images/icon-img.png'
 

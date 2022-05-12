@@ -2,7 +2,6 @@ import io from "socket.io-client"
 import Axios from "axios"
 
 import { useState, useEffect } from "react";
-import '../customStyles/Chat.css'
 
 import ChatBox from "./sub-components/chatBox";
 import UserChat from "./sub-components/usersChat"

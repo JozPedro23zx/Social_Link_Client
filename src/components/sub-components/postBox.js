@@ -1,4 +1,3 @@
-import '../../customStyles/postBox.css'
 import default_like from '../../images/like.png'
 import true_like from '../../images/like2.png'
 import comment from '../../images/comment.png'
