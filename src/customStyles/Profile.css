@@ -13,27 +13,27 @@
 
 .profile .profileInfo{
     display: inline-block;
-    line-height: 50px;
+    line-height: 3rem;
 }
 
 .profile .profileInfo .avatar {
-    height: 250px;
-    width: 250px;
+    height: 15.5rem;
+    width: 15.5rem;
     border-radius: 50%;
     cursor: pointer;
 }
 
 .profile .buttons {
-    margin-left: 10px;
+    margin-left: 1rem;
 }
 
 .profile .buttons p{
     background-color: rgb(127, 236, 255);
     border: 2px solid rgb(129, 129, 129);
 
-    width: 80px;
-    padding: 8px;
-    font-size: 19px;
+    width: 5rem;
+    padding: .8rem;
+    font-size: 1.2rem;
     font-weight: 700;
 
     color: black;
@@ -48,9 +48,9 @@
 }
 
 .profile hr{
-    margin-bottom: 40px;
+    margin-bottom: 2rem;
 }
 
 .profile .allPost{
-    padding-left: 10px;
+    padding-left: 1rem;
 }

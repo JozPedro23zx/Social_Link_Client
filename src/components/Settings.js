@@ -47,9 +47,9 @@ function Settings(props){
         <div className="settings">
             <h3>{successMessage}</h3>
             <div className="form-settings">
-                <p>Name</p>
+                <p>New username</p>
                 <input id="username" type='text'></input>
-                <p>Password</p>
+                <p>New password</p>
                 <input id="password" type='password'></input>
                 <label className="avatar-upload">
                     <input id="avatar" type='file' accept="image/*" onChange={(event) => preview_image(event)}></input>
@@ -57,7 +57,7 @@ function Settings(props){
                     <p>Edit your avatar</p>
                 </label>
                 <br></br>
-                <button onClick={() => modalScreen("open")}>Change</button>
+                <button className="changeButton" onClick={() => modalScreen("open")}>Change</button>
             </div>
             {screen === "open" ? <Modal  imageSelected={imageSelected} modalScreen={(state) => modalScreen(state)} showMessage={showMessage}/> : <></>}
         </div>

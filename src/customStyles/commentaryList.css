@@ -7,24 +7,24 @@
 .commentary-list{
     border: 1px solid black;
     width: 71%;
-    height: 500px;
+    height: 35rem;
 
     overflow-y: scroll
 }
 
 .user-info-right {
-    padding-top: 2px;
+    padding-top: .2rem;
 }
 .user-name {
     font-weight: bold;
 }
 
 .comment {
-    font-size: 15px;
+    font-size: 1rem;
     text-align: left;
 
     
-    padding: 15px 15px 0 15px;
+    padding: 1.1rem 1.1rem 0 1.1rem;
     
 
     border: 1px solid #e6ecf0;
@@ -33,40 +33,28 @@
     background: #ffffff;
     overflow: hidden;
 
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 .comment-content {
-    padding-top: 6px;
-    font-size: 19px;
+    padding-top: .6rem;
+    font-size: 1.2rem;
     clear: left;
-    padding-bottom: 15px;
+    padding-bottom: 1.2rem;
 }
 
-.metadata {
-    color: rgb(101, 119, 134);
-    padding-bottom: 15px;
-    border-bottom: 1px solid #e6ecf0;
-}
-
-.fake-link {
-    cursor: pointer;
-}
-.fake-link:hover {
-    text-decoration: underline;
-}
 .comment .avatar-container {
-    margin-right: 10px;
+    margin-right: 1rem;
     float: left;
 }
 .comment .avatar {
-    height: 39px;
-    width: 39px;
+    height: 3rem;
+    width: 2.8rem;
     border-radius: 50%;
     cursor: pointer;
 }
 
-.bottom-buttons {
+/* .bottom-buttons {
     display: flex;
     flex-direction: row;
 }
@@ -98,7 +86,8 @@
     align-items: center;
 }
 
-/* Images */
+Images
+
 .image-container {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -159,4 +148,4 @@
 .comment svg {
     box-sizing: content-box !important;
     vertical-align: baseline !important;
-}
+} */

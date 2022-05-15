@@ -1,25 +1,25 @@
 .wrapper{
     background: #fff;
-    width: 100%;
-    border-radius: 15px;
-    padding: 25px 25px 15px 25px;
-    box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
-    margin-top: 20px;
+    max-width: 25rem;
+    border-radius: 1.2rem;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    box-shadow: 0px 1rem .9rem rgba(0,0,0,0.1);
+    margin-top: 1.5rem;
   }
   .input-box{
-    padding-top: 10px;
+    padding-top: .5rem;
     border-bottom: 1px solid #e6e6e6;
   }
   .input-box .tweet-area{
     position: relative;
-    min-height: 130px;
-    max-height: 170px;
+    min-height: 10rem;
+    max-height: 12rem;
     overflow-y: auto;
   }
 
   .input-box img{
     width: 100%;
-    height: 300px;
+    height: 18rem;
   }
 
   .tweet-area::-webkit-scrollbar{
@@ -27,14 +27,14 @@
   }
   .tweet-area .placeholder{
     position: absolute;
-    margin-top: -3px;
-    font-size: 22px;
+    margin-top: -.3rem;
+    font-size: 1.6rem;
     color: #98A5B1;
     pointer-events: none;
   }
   .tweet-area .input{
     outline: none;
-    font-size: 24px;
+    font-size: 1.8rem;
     min-height: inherit;
     word-wrap: break-word;
     word-break: break-all;
@@ -45,7 +45,7 @@
   }
 
   .bottom {
-    margin-top: 4px;
+    margin-top: .4rem;
   }
   .bottom .content-button{
     display: flex;
@@ -54,21 +54,21 @@
   }
   .bottom .counter{
     color: #333;
-    width: 40px;
+    width: 4rem;
     font-weight: 500;
-    margin-right: 15px;
-    padding-right: 15px;
+    margin-right: 1.2rem;
+    padding-right: 1.3rem;
     border-right: 1px solid #aab8c2;
   }
   .bottom button{
-    padding: 9px 18px;
+    padding: .7rem 1.4rem;
     border: none;
     outline: none;
-    border-radius: 50px;
-    font-size: 16px;
+    border-radius: 5rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    background: #1da1f2;
-    color: #fff;
+    background: #74FDAC;
+    color: rgb(0, 0, 0);
     cursor: pointer;
     opacity: 0.5;
     pointer-events: none;
@@ -79,12 +79,12 @@
     pointer-events: auto;
   }
   .bottom button:hover{
-    background: #0d8bd9;
+    background: #61d491;
   }
 
   .bottom .file-upload{
     margin-left: 0;
-    margin-right: 200px;
+    margin-right: 12rem;
 
     cursor: pointer;
   }
@@ -94,11 +94,11 @@
   }
 
   .bottom .file-upload img {
-    padding: 7px;
+    padding: .7rem;
     margin: auto;
     fill: rgb(101, 119, 134);
-    height: 22px;
-    width: 27px;
-    margin-left: 4px;
+    height: 1.7rem;
+    width: 1.9rem;
+    margin-left: .4rem;
     transition: 0.2s;
 }

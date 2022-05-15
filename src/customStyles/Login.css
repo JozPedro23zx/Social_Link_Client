@@ -1,38 +1,38 @@
 
 
 .formulary{
-    font-size: 20px;
+    font-size: 1.4rem;
 
-    margin-top: 10rem;
+    margin-top: 7rem;
     margin-left: 31.5%;
 
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     background-color: #f0f2f5;
-    border: 1px solid rgb(124, 124, 124);
+    border: .2rem solid #9BB8A7;
 
     display: grid;
-    width: 500px;
-    height: 400px;
+    width: 30rem;
+    height: 25rem;
     text-align: center;
 }
 
 .formulary input, .formulary button{
-    font-size: 20px;
+    font-size: 1.4rem;
 
     margin-left: 13%;
 
     width: 70%;
-    height: 60px;
-    padding: 1px;
-    margin-bottom: 2px;
+    height: 4.2rem;
+    padding: .1rem;
+    margin-bottom: 0.5rem;
 }
 
 .formulary button{
     font-weight: 700;
 
     width: 71%;
-    background-color: rgb(0, 217, 255);
+    background-color: #74FDAC;
     border: none;
     cursor: pointer;
 
@@ -40,10 +40,10 @@
 }
 
 .formulary button:hover{
-    background-color: rgb(2, 201, 236);
+    background-color: #61d491;
 }
 
 .formulary span{
-    color: rgb(255, 94, 36);
+    color: #13b903;
     cursor: pointer;
 }

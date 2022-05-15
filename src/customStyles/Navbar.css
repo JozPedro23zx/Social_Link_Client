@@ -1,16 +1,16 @@
 .navbar .options{
-    padding-top: 20px;
-    padding-left: 15px;
+    padding-top: 1.6rem;
+    padding-left: 1.2rem;
 }
 
 .navbar .options .link{
     padding: 3px;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
     width: 70%;
     
     border: 2px solid rgb(126, 126, 126);
     border-radius: 15px;
-    font-size: 19px;
+    font-size: 1.2rem;
     
 }
 

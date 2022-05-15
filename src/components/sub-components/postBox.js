@@ -58,7 +58,7 @@ function PostBox(props){
 
             <div className='bottom-buttons'>
                 <div onClick={() => incrementLike(post.id_post, isLike)} className='like'><img src={likeIcon} alt={"Like button"}></img> {likes}</div>
-                <Link to={`/post/${post.id_post}`}><img src={comment}lt={"Comment button"} alt={"Comment button"}></img></Link>
+                <div className='like'><Link to={`/post/${post.id_post}`}><img src={comment}lt={"Comment button"} alt={"Comment button"}></img></Link></div>
             </div>
         </div>
     )
