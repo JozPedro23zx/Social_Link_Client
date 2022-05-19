@@ -10,7 +10,6 @@ function ProfileInfo(props){
     const posts = props.posts
 
     async function talkUser(){
-        console.log(user.id_user)
         await Axios({
             method: 'POST',
             data:{

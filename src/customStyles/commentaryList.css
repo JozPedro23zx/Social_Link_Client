@@ -7,9 +7,13 @@
 .commentary-list{
     border: 1px solid black;
     width: 71%;
+    max-width: 40rem;
+
     height: 35rem;
 
-    overflow-y: scroll
+    overflow-y: scroll;
+
+    margin-bottom: 10rem;
 }
 
 .user-info-right {
@@ -22,10 +26,9 @@
 .comment {
     font-size: 1rem;
     text-align: left;
-
+    word-wrap: break-word;
     
     padding: 1.1rem 1.1rem 0 1.1rem;
-    
 
     border: 1px solid #e6ecf0;
     color: rgb(20, 23, 26);

@@ -8,7 +8,6 @@ function ChatBox({socket, roomId, userId, messageList, receiveMessage, userSelec
     
     useEffect(async ()=>{
         socket.on("receive_message", (data) =>{
-            console.log(roomId+' and '+data.roomId)
              receiveMessage(data)
         })
     }, [socket]) 

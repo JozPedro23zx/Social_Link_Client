@@ -37,7 +37,7 @@ function PostBox(props){
         <div className='post'>
             <div className='user-info'>
             <div className='avatar-container'>
-                <img className='avatar' src={user.avatar} alt='avatar'></img>
+            <Link to={{pathname: `/profile/${user.id_user}`}}><img className='avatar' src={user.avatar} alt='avatar'></img></Link>
             </div>
             <div className='user-info-right'>
                 <div className='user-name'>

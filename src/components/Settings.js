@@ -115,7 +115,7 @@ function Modal(props){
     }
 
     return(
-        <section className="modal-wrapper">
+        <div className="modal-wrapper">
             <div className="modal">
                 <h2>Enter your password</h2>
                 <div>
@@ -126,7 +126,7 @@ function Modal(props){
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     )
 }
 

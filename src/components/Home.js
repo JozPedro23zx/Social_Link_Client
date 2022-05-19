@@ -9,8 +9,27 @@ function Home(props) {
     const [likeList, setArray] = useState([])
     const [allPosts, setPosts] = useState([])
     
-    const fetchItems = async (postContent) =>{
+    const searchPost = async (postContent) =>{
         let search = postContent ? postContent : 'empty'
+        let allIdPosts = [0]
+        allPosts.map(post => {allIdPosts.push(post.id_post)})
+
+        try{
+            await Axios({
+                method: 'POST',
+                data: {allIdPosts, search},
+                withCredentials: true,
+                url: `${process.env.REACT_APP_API}/getAllPosts`
+            }).then((dataPosts)=>{
+                setPosts(dataPosts.data)
+            })
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    const fetchItems = async () =>{
+        let search = 'empty'
         let allIdPosts = [0]
         allPosts.map(post => {allIdPosts.push(post.id_post)})
 
@@ -25,6 +44,7 @@ function Home(props) {
                 dataPosts.data.map(post => postArray.push(post))
                 setPosts(postArray)
             })
+
 
             const dataLikes = await fetch(`${process.env.REACT_APP_API}/getLikeList/${props.userId}`)
             const likes = await dataLikes.json()
@@ -43,7 +63,7 @@ function Home(props) {
 
     return(
         <div className="home">
-        <input className='search-input' type="search" onChange={(event) => fetchItems(event.target.value)} placeholder="Search"></input>
+        <input className='search-input' type="search" onChange={(event) => searchPost(event.target.value)} placeholder="Search"></input>
 
             <div className="publication">
                 <InputBox userId={props.userId} fetchItems={() => fetchItems()}/>

@@ -1,15 +1,14 @@
-@media all and (min-width:0px) and (max-width: 425px) {
+/* @media all and (min-width:0px) and (max-width: 425px) {
     .post {
         width: 90% !important;
     }
-}
+} */
 .post {
     font-size: 1.1rem;
     text-align: left;
 
     margin-top: 1.3rem;
     padding: 1.3rem 1.3rem 0 1.3rem;
-    max-width: 50rem;
     width: 60%;
     margin-bottom: 1.8rem;
 

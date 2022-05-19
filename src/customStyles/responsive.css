@@ -1,55 +1,60 @@
-@media (max-width: 5500px){
-    *{
-        overflow-x:hidden;
-    }
+@media (max-width: 550px){ 
+    html{
+        font-size: 10px;
+    } 
 
-    /* Login */
+    /* Login  */
     .formulary{
-        font-size: 18px;
+        font-size: 1.8rem;
     
         margin-top: 5rem;
-        margin-left: 3.5%;
+        margin-left: 3%;
     
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
     
-        width: 300px;
-        height: 400px;
+        width: 30rem;
+        height: 40rem;
     }
 
     .formulary input, .formulary button{
-        font-size: 18px;
+        font-size: 1.8rem;
     
         margin-left: 13%;
     
         width: 70%;
-        height: 55px;
-        padding:.5px;
-        margin-bottom: 2px;
+        height: 5.5rem;
+        padding:.3rem;
+        margin-bottom: .2rem;
     }
 
-    /* Main */
+      
+     /* Main  */
     .main{
         display: grid;
         margin-left: 0;
+        overflow-x:hidden;
+
     }
 
     .content{
         width: 100%;
     }
 
-    /* Navbar */
+     /* Navbar  */
     .navbar{
         width: 100%; 
         position: fixed;
 
         bottom: 0;
+        overflow-x:hidden;
+
     }
 
     .navbar .options{
-        padding-top: 15px;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-top: 1.5rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
 
     .navbar .options ul{
@@ -58,26 +63,108 @@
     }
 
     .navbar .options .link{
-        padding: 3px;
-        margin-bottom: 10px;
-        width: 60px;
+        padding: .3rem;
+        margin-bottom: 1rem;
+        width: 5rem;
         
         border: 2px solid rgb(126, 126, 126);
         border-radius: 0;
-        font-size: 19px;        
+        /* font-size: 19px;         */
     }
 
-    /* Home */
+     
+ /* Home  */
     .home{
         width: 100%;
     }
 
     .home .wrapper{
         background: #fff;
-        width: 100%;
-        border-radius: 15px;
-        padding: 25px 25px 15px 25px;
-        box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
-        margin-top: 20px;
+        width: 76%;
+        border-radius: 1.5rem;
+        padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+        box-shadow: 0px 1.0rem 1.5rem rgba(0,0,0,0.1);
+        margin-top: 2rem;
     }
+
+    .home .post{
+        width: 80%;
+    }
+
+    .home .load-posts{
+        margin-bottom: 7rem;
+    }
+
+    /* Comments */
+    .commentary .post{
+        max-width: 25rem;
+        width: 80%;
+    }
+
+    .commentary .inputComment{
+        max-width: 34rem;
+        display: grid;
+    }
+
+    .commentary .inputComment input{
+        width: 80%;
+    }
+
+    /* Profile */
+    .profile .post{
+        width: 80%;
+    }
+
+    .settings h3{
+        margin-top: 5%;
+        margin-left: 10%;
+    }
+
+    .form-settings{
+        width: 85%;
+        margin-left: 4.4%;
+        margin-bottom: 10rem;
+    }
+
+    .modal-wrapper{
+        overflow-x:hidden;
+        position: absolute;
+    }
+    
+    .modal-wrapper .modal{
+        overflow-x:hidden;
+        height: 100%;
+        padding: 1.4rem;
+    }
+
+    .modal-wrapper .modal h2{
+        margin-top: 15rem;
+    }
+
+    /* Chat */
+    .chat-content{
+        /* overflow-y: scroll; */
+        /* height: 50rem; */
+    }
+
+    .chat-nav-bar{
+        width: 26%;
+        padding: 1rem;
+
+        font-size: 1.2rem;
+    }
+
+    .chat-window {
+        width: 32rem;
+        margin-left: 0;
+        font-size: 1.4rem;
+    }
+
+    .chat-body{
+        height: 27rem;
+    }
+
+    /* .chat-window .chat-body {
+        height: calc(450px - (45px + 70px));
+    } */
 }

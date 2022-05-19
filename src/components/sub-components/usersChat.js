@@ -11,12 +11,11 @@ function UserChat(props){
         setUser(await props.selectUser(userId))
     }, [userId])
 
-    console.log(props.room)
-
+    var name = user.name ? user.name.substr(0, 15) : ''
     return(
         <div onClick={()=>{props.joinRoom(props.room.id_room, user.id_user)}} className='avatar-container'>
                 <img className='avatar' src={user.avatar} alt='avatar'></img>
-                <p>{user.name}</p>
+                <p>{name}</p>
         </div>
     )
 }

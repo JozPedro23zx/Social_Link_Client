@@ -15,7 +15,7 @@ import './customStyles/inputBox.css'
 import './customStyles/postBox.css'
 
 
-// import './customStyles/responsive.css';
+import './customStyles/responsive.css';
 
 import Navbar from './components/Navbar';
 import Home from './components/Home'

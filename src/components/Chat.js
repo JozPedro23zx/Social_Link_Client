@@ -66,7 +66,7 @@ function Chat(props) {
 
 
     return (
-      <div>
+      <div className="chat-content">
         <div className="chat-nav-bar">
           {roomsList.map(room =>(
             <UserChat room={room} userId={props.userId} joinRoom={joinRoom} selectUser={selectUser}/>
