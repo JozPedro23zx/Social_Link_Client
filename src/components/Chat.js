@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import ChatBox from "./sub-components/chatBox";
 import UserChat from "./sub-components/usersChat"
 
+console.log(process.env.REACT_APP_API)
 
 const socket = io.connect(`${process.env.REACT_APP_API}`)
 
