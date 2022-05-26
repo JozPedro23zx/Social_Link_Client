@@ -32,7 +32,7 @@ function App() {
   function currentUser(){
     Axios({
       method: "GET",
-      // withCredentials: true,
+      withCredentials: true,
       url: `${process.env.REACT_APP_API}/user`,
     }).then((res) => {
       setAuth(parseInt(res.data));
