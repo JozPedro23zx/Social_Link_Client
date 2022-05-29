@@ -20,7 +20,7 @@ import './customStyles/responsive.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home'
 import Profile from './components/Profile'
-// import Chat from './components/Chat'
+import Chat from './components/Chat'
 import Comments from './components/Comments';
 import Login from './components/Login';
 import Settings from './components/Settings'
@@ -57,7 +57,7 @@ function App() {
               
               <Route path='/profile/:userId' element={<Profile userId={authenticateUser} />} />
   
-              {/* <Route path='/chat' element={<Chat userId={authenticateUser} />} /> */}
+              <Route path='/chat' element={<Chat userId={authenticateUser} />} />
   
               <Route path='/post/:postId' element={<Comments userId={authenticateUser} />} />
 
