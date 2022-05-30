@@ -26,31 +26,35 @@ function SignIn(props){
     async function verify(){
         let username = document.getElementById('username').value
         let password = document.getElementById('password').value
-        // await Axios({
-        //     method: "POST",
-        //     data: {
-        //       username: username,
-        //       password: password,
-        //     },
-        //     withCredentials: true,
-        //     url: `${process.env.REACT_APP_API}/login`,
-        //   }).then((res) => {
-        //       setMistake(res.data)
-        //       props.currentUser()
-        //   }).catch((err) => console.log(err));
-        const requestOptions={
+        await Axios({
             method: "POST",
-            credentials: 'include',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                username,
-                password,
-            }),
-        }
-        let response = await fetch(`${process.env.REACT_APP_API}/login`, requestOptions)
-        let data = await response.json()
-        setMistake(data)
-        if(data[0] === '') props.changeForm()
+            data: {
+              username: username,
+              password: password,
+            },
+            withCredentials: true,
+            url: `${process.env.REACT_APP_API}/login`,
+          }).then((res) => {
+              console.log("Miau")
+              setMistake(res.data)
+              props.currentUser()
+          }).catch((err) => console.log(err));
+
+
+
+        // const requestOptions={
+        //     method: "POST",
+        //     credentials: 'include',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify({
+        //         username,
+        //         password,
+        //     }),
+        // }
+        // let response = await fetch(`${process.env.REACT_APP_API}/login`, requestOptions)
+        // let data = await response.json()
+        // setMistake(data)
+        // if(data[0] === '') props.changeForm()
     
     }
 
