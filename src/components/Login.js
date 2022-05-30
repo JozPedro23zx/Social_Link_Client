@@ -35,7 +35,6 @@ function SignIn(props){
             withCredentials: true,
             url: `${process.env.REACT_APP_API}/login`,
           }).then((res) => {
-              console.log("Miau")
               setMistake(res.data)
               props.currentUser()
           }).catch((err) => console.log(err));

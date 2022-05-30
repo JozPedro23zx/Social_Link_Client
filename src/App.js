@@ -29,8 +29,8 @@ function App() {
   const [authenticateUser, setAuth] = useState(0)
   const [postContent, setPostContent] = useState('empty')
 
-  function currentUser(){
-    Axios({
+  async function currentUser(){
+    await Axios({
       method: "GET",
       withCredentials: true,
       url: `${process.env.REACT_APP_API}/user`,
