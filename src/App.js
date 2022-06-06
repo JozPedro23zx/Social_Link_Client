@@ -36,10 +36,12 @@ function App() {
       url: `${process.env.REACT_APP_API}/user`,
     }).then((res) => {
       setAuth(parseInt(res.data));
+      console.log(parseInt(res.data))
     });
   }
 
   useEffect(() =>{
+    console.log(process.env.REACT_APP_API)
     currentUser()
   }, [])
 
