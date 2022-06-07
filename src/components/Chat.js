@@ -22,7 +22,10 @@ function Chat(props) {
     
   function rooms(){
     Axios({
-      method: "GET",
+      method: "POST",
+      data:{
+        idUser: props.userId
+      },
       withCredentials: true,
       url: `${process.env.REACT_APP_API}/getAllRooms`,
     }).then((res)=>{

@@ -59,7 +59,7 @@ function Settings(props){
                 <br></br>
                 <button className="changeButton" onClick={() => modalScreen("open")}>Change</button>
             </div>
-            {screen === "open" ? <Modal  imageSelected={imageSelected} modalScreen={(state) => modalScreen(state)} showMessage={showMessage}/> : <></>}
+            {screen === "open" ? <Modal  imageSelected={imageSelected} modalScreen={(state) => modalScreen(state)} showMessage={showMessage} userId={props.userId}/> : <></>}
         </div>
     )
 }
@@ -73,6 +73,7 @@ function Modal(props){
         Axios({
             method: 'POST',
             data: {
+                idUser: props.userId,
                 username,
                 password,
                 avatarId,

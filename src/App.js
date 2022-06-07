@@ -28,10 +28,8 @@ import Settings from './components/Settings'
 function App() {
   const [authenticateUser, setAuth] = useState(0)
   const [postContent, setPostContent] = useState('empty')
-  const [tokenSaved, setToken] = useState('')
 
   async function currentUser(){
-    // let token = tokenSaved ? tokenSaved : newToken
     let token = localStorage.getItem('token')
     console.log("token", token)
     await Axios({
@@ -43,12 +41,10 @@ function App() {
       url: `${process.env.REACT_APP_API}/user`,
     }).then((res) => {
       setAuth(parseInt(res.data));
-      console.log(parseInt(res.data))
     });
   }
 
 async function getToken(newToken){
-  console.log("tokenResult", newToken)
   localStorage.setItem("token", newToken)
   currentUser()
 }
