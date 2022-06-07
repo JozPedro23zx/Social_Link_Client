@@ -1,6 +1,9 @@
 import {Link} from 'react-router-dom'
 
 function Navbar(props){
+  function logout(){
+    localStorage.removeItem('token')
+  }
     return(
       <div className='options'>
         <ul>
@@ -14,7 +17,7 @@ function Navbar(props){
             <Link to="/chat"><p className='link'>Chat</p></Link>
           </li>
           <li>
-            <a href={`${process.env.REACT_APP_API}/logout`}><p className='link exit'>Logout</p></a>
+            <a href={`${process.env.REACT_APP_API}/logout`}><p onClick={() => logout()} className='link exit'>Logout</p></a>
           </li>
         </ul>
       </div>

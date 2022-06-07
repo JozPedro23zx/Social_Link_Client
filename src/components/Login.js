@@ -13,8 +13,7 @@ function Login(props){
 
     return(
         <div className="session-user">
-            
-                {formulary === "Login" ? <SignIn changeForm={changeForm} currentUser={() => props.currentUser()}/> : <SignUp changeForm={changeForm}/>}
+                {formulary === "Login" ? <SignIn changeForm={changeForm} currentUser={() => props.currentUser()} getToken={(tokenResult) => props.getToken(tokenResult)}/> : <SignUp changeForm={changeForm}/>}
             
         </div>
     )
@@ -34,10 +33,12 @@ function SignIn(props){
             },
             withCredentials: true,
             url: `${process.env.REACT_APP_API}/login`,
-          }).then((res) => {
-              setMistake(res.data)
-              props.currentUser()
-          }).catch((err) => console.log(err));
+        }).then((res) => {
+              console.log(res.data)
+              setMistake(res.data.message)
+              props.getToken(res.data.token)
+            //   props.currentUser()
+        }).catch((err) => console.log(err));
 
 
 
