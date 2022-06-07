@@ -50,7 +50,8 @@ function InputBox(props){
             method: 'POST',
             data: {
                 content: content.innerHTML,
-                imageId: image
+                imageId: image,
+                idUser: props.userId
             },
             withCredentials: true,
             url: `${process.env.REACT_APP_API}/createPost`,
