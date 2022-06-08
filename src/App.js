@@ -31,7 +31,6 @@ function App() {
 
   async function currentUser(){
     let token = localStorage.getItem('token')
-    console.log("token", token)
     await Axios({
       method: "POST",
       data:{
