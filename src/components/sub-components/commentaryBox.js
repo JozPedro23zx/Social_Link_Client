@@ -1,23 +1,23 @@
 import Axios from "axios";
-
+import {useState} from 'react'
 
 function CommentaryBox(props){
 
     async function comment(){
-        let content = document.getElementById("inputText")
-
+        let content = document.getElementById("dataContent")
+        console.log(content.innerHTML)
 
         await Axios({
             method: 'POST',
             data: {
-                content: content.value,
+                content: content.innerHTML,
                 idUser: props.userId,
                 idPost: parseInt(props.postId)
             },
             withCredentials: true,
             url: `${process.env.REACT_APP_API}/createComment`,
         }).then((res) => {
-            content.value = ''
+            content.innerHTML = ''
         })
 
         props.fetchItems()
@@ -25,7 +25,14 @@ function CommentaryBox(props){
 
     return(
         <div className="inputComment">
-            <input type="text" id='inputText' ></input>
+            <div className="inputText" placeholder="Comment">
+                <div 
+                    id='dataContent'
+                    className="input" 
+                    contenteditable="true" 
+                    spellcheck="true"
+                ></div>
+            </div>
             <button onClick={() => comment()}>Comment</button>
         </div>
     )

@@ -1,19 +1,27 @@
-@media all and (min-width:0px) and (max-width: 425px) {
-    .comment {
-        width: 90% !important;
-    }
+.commentary{
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-post{
+    margin-left: -1rem;
+    height: auto;
+}
+
+.content-post .post{
+    width: 90%;
 }
 
 .commentary-list{
     border: 1px solid black;
-    width: 71%;
+    width: 27rem;
     max-width: 40rem;
 
-    height: 35rem;
+    height: 36rem;
 
     overflow-y: scroll;
 
-    margin-bottom: 10rem;
+    /* margin-bottom: 1rem; */
 }
 
 .user-info-right {

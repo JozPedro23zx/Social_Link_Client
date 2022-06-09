@@ -40,7 +40,7 @@ function Comments(props){
 
     return(
         <div className='commentary'>
-            <div>
+            <div className='content-post'>
                 <PostBox likeList={likeList} post={post} handleClick={Like} userId={props.userId} />    
                 <CommentaryBox userId={props.userId} postId={postId} fetchItems={() => fetchItems()}/>
             </div>
