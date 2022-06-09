@@ -11,8 +11,10 @@
 .inputComment .input{
     width: 27rem;
     height: 4rem;
+    padding: .3rem;
+    
     background-color: #fff;
-    border: .1rem solid rgb(2, 153, 90);
+    border: 2px solid rgb(0, 255, 149);
 
     font-size: 1.1rem;
     outline: none;
@@ -27,8 +29,8 @@
     font-size: 1rem;
     font-weight: 700;
 
+    border: none;
     background-color: rgb(0, 255, 149);
-    border-color: rgb(206, 205, 205);
 
     margin-top: .4rem;
 

@@ -96,18 +96,38 @@
     }
 
     /* Comments */
+    .commentary{
+        display: grid;
+    }
+    .content-post{
+        margin-left: -.1rem;
+        height: auto;
+    }
+
     .commentary .post{
         max-width: 25rem;
-        width: 80%;
+        width: 100%;
     }
 
     .commentary .inputComment{
-        max-width: 34rem;
-        display: grid;
+        width: 24rem;
+        display: flex;
     }
 
-    .commentary .inputComment input{
-        width: 80%;
+    .inputComment .input{
+        width: 22.5rem;
+        border-radius: 1rem 0 0 1rem;
+    }
+    
+    .inputComment button{
+        margin-top: -.01rem;
+        height: auto;
+        border-radius: 0 1rem 1rem 0;
+    }
+
+    .commentary-list{
+        margin-left: -.1rem;
+        width: 28rem;
     }
 
     /* Profile */
@@ -142,10 +162,6 @@
     }
 
     /* Chat */
-    .chat-content{
-        /* overflow-y: scroll; */
-        /* height: 50rem; */
-    }
 
     .chat-nav-bar{
         width: 26%;
