@@ -1,13 +1,15 @@
-import PostBox from './postBox'
 import {useEffect, useState} from 'react'
-import Axios from 'axios'
+import {Link, useNavigate} from 'react-router-dom'
 
-import {Link} from 'react-router-dom'
+import Axios from 'axios'
+import PostBox from './postBox'
+
 
 
 function ProfileInfo(props){
     const user = props.user
     const posts = props.posts
+    const navigate = useNavigate()
 
     async function talkUser(){
         await Axios({
@@ -19,6 +21,7 @@ function ProfileInfo(props){
             withCredentials: true,
             url: `${process.env.REACT_APP_API}/createRoom`
         })
+        navigate('/chat')
     }
 
     return(
@@ -36,7 +39,7 @@ function ProfileInfo(props){
                 {
                     props.userAuth === user.id_user ? 
                     <Link to="/settings"> <p className='settings-button'>Settings</p> </Link> :
-                    <Link to={"/chat"}> <p className='talk-button' onClick={() => talkUser()}>Talk</p> </Link>
+                    <p className='talk-button' onClick={() => talkUser()}>Talk</p>
                 }
                 
             </div>

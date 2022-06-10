@@ -20,8 +20,8 @@ function Chat(props) {
       rooms()
     }, [])
     
-  function rooms(){
-    Axios({
+  async function rooms(){
+    await Axios({
       method: "POST",
       data:{
         idUser: props.userId
