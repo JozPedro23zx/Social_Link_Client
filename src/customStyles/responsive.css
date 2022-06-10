@@ -100,13 +100,13 @@
         display: grid;
     }
     .content-post{
-        margin-left: -.1rem;
         height: auto;
     }
-
+    
     .commentary .post{
-        max-width: 25rem;
-        width: 100%;
+        margin-left: -1rem;
+        margin-top: 0;
+        width: 31rem;
     }
 
     .commentary .inputComment{
@@ -126,8 +126,8 @@
     }
 
     .commentary-list{
-        margin-left: -.1rem;
-        width: 28rem;
+        margin-left: -1.8rem;
+        width: 33rem;
     }
 
     /* Profile */
