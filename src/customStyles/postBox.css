@@ -30,6 +30,8 @@
     font-size: 1.3rem;
     clear: left;
     padding-bottom: 1.5rem;
+
+    word-wrap: break-word;
 }
 
 .metadata {
