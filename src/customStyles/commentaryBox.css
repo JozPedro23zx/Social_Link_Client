@@ -36,3 +36,7 @@
 
     cursor: pointer;
 }
+
+.commentary .image-container{
+    width: 29rem;
+}
