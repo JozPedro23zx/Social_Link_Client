@@ -36,7 +36,6 @@ function InputBox(props){
             const formData = new FormData()
             formData.append("file", imageSelected)
             formData.append("upload_preset", "xxtdt0kg")
-
             Axios.post("https://api.cloudinary.com/v1_1/dhuy2dkhc/image/upload", formData)
             .then((response) =>{
                 sendData(content, response.data.public_id)
@@ -110,7 +109,7 @@ function InputBox(props){
             <div className="bottom">
                 <div className="content-button">
                     <label className='file-upload'>
-                        <input type='file' accept="image/*" onChange={(event) => preview_image(event)}></input>
+                        <input type='file'  onChange={(event) => preview_image(event)}></input>
                         <img src={imgIcon} />
                     </label>
                     <span className="counter" >{counter}</span>
