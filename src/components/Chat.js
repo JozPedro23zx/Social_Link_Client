@@ -63,6 +63,15 @@ function Chat(props) {
   }
 
   const receiveMessage = (message)=>{
+        // var MyTimeZone = Intl.DateTimeFormat().resolvedOptions().locale;
+        // var options = {
+        //   year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'
+        // };
+        // var dateUser = new Intl.DateTimeFormat(MyTimeZone, options).format(message.date)
+        // console.log(dateUser)
+        // message.date = dateUser
+        // console.log(message.date)
+
     setMessageList((list) => [...list, message])
   }
 

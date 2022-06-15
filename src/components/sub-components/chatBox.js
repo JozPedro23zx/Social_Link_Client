@@ -5,7 +5,11 @@ import ScrollToBottom from 'react-scroll-to-bottom'
 
 function ChatBox({socket, roomId, userId, messageList, receiveMessage, userSelected}){
     const [currentMessage, setCurrentMessage] = useState("")
-    
+    const MyTimeZone = Intl.DateTimeFormat().resolvedOptions().locale;
+    const optionsDate = {
+        month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'
+    };
+
     useEffect(async ()=>{
         socket.on("receive_message", (data) =>{
              receiveMessage(data)
@@ -18,11 +22,10 @@ function ChatBox({socket, roomId, userId, messageList, receiveMessage, userSelec
                 roomId: roomId,
                 userId: userId,
                 message: currentMessage,
-                time: new Date().getHours() +
-                      ":" +
-                      new Date().getMinutes()
+                time: new Date()
             }
 
+            receiveMessage(messageData)
             await socket.emit("send_message", messageData)
             await Axios({
                 method: 'POST',
@@ -30,7 +33,6 @@ function ChatBox({socket, roomId, userId, messageList, receiveMessage, userSelec
                 withCredentials: true,
                 url: `${process.env.REACT_APP_API}/sendMessage`
             })
-            receiveMessage(messageData)
             setCurrentMessage("")
         }
     }
@@ -44,6 +46,8 @@ function ChatBox({socket, roomId, userId, messageList, receiveMessage, userSelec
             <div className='chat-body'>
                 <ScrollToBottom className="message-container">
                     {messageList.map((messageContent)=>{
+                        var MyDate = new Date(messageContent.time)
+                        var dateUser = new Intl.DateTimeFormat(MyTimeZone, optionsDate).format(MyDate)
                         return(
                             <div className='message' id={userId === messageContent.userId ? "you" : "other"}>
                                 <div>
@@ -51,7 +55,7 @@ function ChatBox({socket, roomId, userId, messageList, receiveMessage, userSelec
                                         <p>{messageContent.message}</p>
                                     </div>
                                     <div className='message-meta'>
-                                        <p id='time'>{messageContent.time}</p>
+                                        <p id='time'>{dateUser}</p>
                                     </div>
                                 </div>
                             </div>
