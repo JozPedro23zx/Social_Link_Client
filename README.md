@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Getting Started with Social_Link_CLient
 
 Use "npm start" or "react-scripts start" to running the app
 
