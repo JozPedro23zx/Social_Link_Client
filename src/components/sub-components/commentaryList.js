@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import {Link} from 'react-router-dom'
+
 
 function CommentaryList(props){
     const comment = props.post
@@ -7,7 +9,7 @@ function CommentaryList(props){
     useEffect(() => {
         const fetchItems = async () =>{
             try{
-                const dataUser = await fetch(`${process.env.REACT_APP_API}/getUser/${comment.id_user}`)
+                const dataUser = await fetch(`http://${process.env.REACT_APP_API}/getUser/${comment.id_user}`)
                 const user = await dataUser.json()
                 setUser(user)
             }catch(err){
@@ -21,11 +23,15 @@ function CommentaryList(props){
         <div className='comment'>
             <div className='user-info'>
             <div className='avatar-container'>
+            <Link to={{pathname: `/profile/${user.id_user}`}}>
                 <img className='avatar' src={user.avatar} alt='avatar'></img>
+            </Link>
             </div>
             <div className='user-info-right'>
                 <div className='user-name'>
+                <Link to={{pathname: `/profile/${user.id_user}`}}>
                     <span className='fake-link'>{user.name}</span>
+                </Link>
                 </div>
             </div>
             </div>

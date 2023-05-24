@@ -12,15 +12,15 @@ function Comments(props){
     
         const fetchItems = async () =>{
             try{
-                const response = await fetch(`${process.env.REACT_APP_API}/getPost/${postId}`)
+                const response = await fetch(`http://${process.env.REACT_APP_API}/getPost/${postId}`)
                 const dataPost  = await response.json()
                 setPost(dataPost)
                 
-                const dataLikes = await fetch(`${process.env.REACT_APP_API}/getLikeList/${props.userId}`)
+                const dataLikes = await fetch(`http://${process.env.REACT_APP_API}/getLikeList/${props.userId}`)
                 const likes = await dataLikes.json()
-                setList(likes.likes)
+                setList(likes.data.likes)
 
-                const dataComments = await fetch(`${process.env.REACT_APP_API}/getComments/${postId}`)
+                const dataComments = await fetch(`http://${process.env.REACT_APP_API}/getComments/${postId}`)
                 const comments = await dataComments.json()
                 setComments(comments)
             }catch(err){
@@ -42,7 +42,7 @@ function Comments(props){
         <div className='commentary'>
             <div className='content-post'>
                 <PostBox likeList={likeList} post={post} handleClick={Like} userId={props.userId} />    
-                <CommentaryBox userId={props.userId} postId={postId} fetchItems={() => fetchItems()}/>
+                <CommentaryBox userId={props.userId} post={post} fetchItems={() => fetchItems()} socket={props.socket}/>
             </div>
             <div className='commentary-list'>
             {commentList.map(commentData =>(

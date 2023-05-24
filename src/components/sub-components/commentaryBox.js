@@ -7,19 +7,27 @@ function CommentaryBox(props){
         let content = document.getElementById("dataContent")
         console.log(content.innerHTML)
 
+        const messageNotification ={
+            idRecipient: props.post.id_user,
+            idSender: props.userId,
+            type: "comment"
+        }
+
         await Axios({
             method: 'POST',
             data: {
                 content: content.innerHTML,
                 idUser: props.userId,
-                idPost: parseInt(props.postId)
+                idPost: parseInt(props.post.id_post)
             },
             withCredentials: true,
-            url: `${process.env.REACT_APP_API}/createComment`,
+            url: `http://${process.env.REACT_APP_API}/createComment`,
         }).then((res) => {
             content.innerHTML = ''
         })
 
+        await props.socket.emit("send_notification", messageNotification)
+        
         props.fetchItems()
     }
 

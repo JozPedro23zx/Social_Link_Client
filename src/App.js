@@ -2,6 +2,11 @@ import { useEffect, useState } from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Axios from "axios";
 
+import io from "socket.io-client"
+
+const socket = io.connect(`${process.env.REACT_APP_API}`, {transports: ['websocket']})
+
+
 import './customStyles/App.css';
 import './customStyles/Navbar.css'
 import './customStyles/Chat.css'
@@ -18,6 +23,7 @@ import './customStyles/postBox.css'
 import './customStyles/responsive.css';
 
 import Navbar from './components/Navbar';
+import Notification from './components/Notification';
 import Home from './components/Home'
 import Profile from './components/Profile'
 import Chat from './components/Chat'
@@ -37,9 +43,10 @@ function App() {
         token
       },
       withCredentials: true,
-      url: `${process.env.REACT_APP_API}/user`,
+      url: `http://${process.env.REACT_APP_API}/user`,
     }).then((res) => {
       setAuth(parseInt(res.data));
+      socket.emit('set_user_id', res.data)
     });
   }
 
@@ -66,9 +73,9 @@ async function getToken(newToken){
               
               <Route path='/profile/:userId' element={<Profile userId={authenticateUser} />} />
   
-              <Route path='/chat' element={<Chat userId={authenticateUser} />} />
+              <Route path='/chat' element={<Chat userId={authenticateUser} socket={socket} />} />
   
-              <Route path='/post/:postId' element={<Comments userId={authenticateUser} />} />
+              <Route path='/post/:postId' element={<Comments userId={authenticateUser} socket={socket}/>} />
 
               <Route path='/settings' element={<Settings userId={authenticateUser} />} />
             </Routes>
@@ -76,6 +83,7 @@ async function getToken(newToken){
           
           <div className='navbar'>
             <Navbar userId={authenticateUser} searchPost={searchPost}/>
+            <Notification socket={socket} userId={authenticateUser}/>
           </div>
         </BrowserRouter>
       </div>

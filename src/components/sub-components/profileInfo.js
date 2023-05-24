@@ -19,7 +19,7 @@ function ProfileInfo(props){
                 user2: user.id_user
             },
             withCredentials: true,
-            url: `${process.env.REACT_APP_API}/createRoom`
+            url: `http://${process.env.REACT_APP_API}/createRoom`
         })
         navigate('/chat')
     }
@@ -55,9 +55,9 @@ function AllPost(props){
     useEffect(() =>{
         const fetchItems = async () =>{
             try{
-                const dataLikes = await fetch(`${process.env.REACT_APP_API}/getLikeList/${props.userId}`)
+                const dataLikes = await fetch(`http://${process.env.REACT_APP_API}/getLikeList/${props.userId}`)
                 const likes = await dataLikes.json()
-                setArray(likes.likes)
+                setArray(likes.data.likes)
             }catch(err){
                 console.log(err)
             }

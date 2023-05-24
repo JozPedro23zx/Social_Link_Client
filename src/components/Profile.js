@@ -12,11 +12,11 @@ function Profile(props) {
     useEffect(() =>{
         const fetchItems = async () =>{
             try{
-                let dataUser = await fetch(`${process.env.REACT_APP_API}/getUser/${userId}`)
+                let dataUser = await fetch(`http://${process.env.REACT_APP_API}/getUser/${userId}`)
                 let user = await dataUser.json()
                 setUser(user)
 
-                let dataPosts = await fetch(`${process.env.REACT_APP_API}/getAllPostsOfUser/${userId}`)
+                let dataPosts = await fetch(`http://${process.env.REACT_APP_API}/getAllPostsOfUser/${userId}`)
                 let posts = await dataPosts.json()
                 setPosts(posts.data)
             }catch(err){

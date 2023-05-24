@@ -15,7 +15,7 @@ function Settings(props){
     useEffect(() =>{
         const fetchItems = async () =>{
             try{
-                let dataUser = await fetch(`${process.env.REACT_APP_API}/getUser/${props.userId}`)
+                let dataUser = await fetch(`http://${process.env.REACT_APP_API}/getUser/${props.userId}`)
                 let user = await dataUser.json()
                 setUser(user)
             }catch(err){
@@ -80,7 +80,7 @@ function Modal(props){
                 passwordConfirm: passwordConfirm.value
             },
             withCredentials: true,
-            url: `${process.env.REACT_APP_API}/changeUserData`
+            url: `http://${process.env.REACT_APP_API}/changeUserData`
         }).then((res) =>{
             if(!res.data){
                 props.modalScreen("close")

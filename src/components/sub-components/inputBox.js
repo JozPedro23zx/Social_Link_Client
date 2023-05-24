@@ -53,7 +53,7 @@ function InputBox(props){
                 idUser: props.userId
             },
             withCredentials: true,
-            url: `${process.env.REACT_APP_API}/createPost`,
+            url: `http://${process.env.REACT_APP_API}/createPost`,
         }).then((res) => {
             content.innerHTML = ''
             validate(content)
