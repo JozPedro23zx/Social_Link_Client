@@ -8,6 +8,7 @@ const socket = io.connect(`${process.env.REACT_APP_API}`, {transports: ['websock
 
 
 import './customStyles/App.css';
+import './customStyles/Notifications.css';
 import './customStyles/Navbar.css'
 import './customStyles/Chat.css'
 import './customStyles/Login.css'
@@ -83,8 +84,8 @@ async function getToken(newToken){
           
           <div className='navbar'>
             <Navbar userId={authenticateUser} searchPost={searchPost}/>
-            <Notification socket={socket} userId={authenticateUser}/>
           </div>
+          <Notification socket={socket} userId={authenticateUser}/>
         </BrowserRouter>
       </div>
     );
