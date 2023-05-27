@@ -32,7 +32,7 @@ function SignIn(props){
               password: password,
             },
             withCredentials: true,
-            url: `${process.env.REACT_APP_API}/login`,
+            url: `http://${process.env.REACT_APP_API}/login`,
         }).then((res) => {
               console.log(res.data)
               setMistake(res.data.message)
@@ -51,7 +51,7 @@ function SignIn(props){
         //         password,
         //     }),
         // }
-        // let response = await fetch(`${process.env.REACT_APP_API}/login`, requestOptions)
+        // let response = await fetch(`http://${process.env.REACT_APP_API}/login`, requestOptions)
         // let data = await response.json()
         // setMistake(data)
         // if(data[0] === '') props.changeForm()
@@ -87,7 +87,7 @@ function SignUp(props){
                         passwordRepeat
                     })
                 }
-                let response = await fetch(`${process.env.REACT_APP_API}/registerUser`, requestOptions)
+                let response = await fetch(`http://${process.env.REACT_APP_API}/registerUser`, requestOptions)
                 let data = await response.json()
                 setMistake(data)
                 if(data[0] === '') props.changeForm()

@@ -10,7 +10,7 @@ function ChatBox({socket, roomId, userId, messageList, receiveMessage, userSelec
         month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'
     };
 
-    useEffect(async ()=>{
+    useEffect(()=>{
         socket.on("receive_message", (data) =>{
              receiveMessage(data)
         })
@@ -25,13 +25,21 @@ function ChatBox({socket, roomId, userId, messageList, receiveMessage, userSelec
                 time: new Date()
             }
 
+            const messageNotification ={
+                roomId: roomId,
+                idRecipient: userSelected.id_user,
+                idSender: userId,
+                type: "chat"
+            }
+
             receiveMessage(messageData)
             await socket.emit("send_message", messageData)
+            await socket.emit("send_notification", messageNotification)
             await Axios({
                 method: 'POST',
                 data: messageData,
                 withCredentials: true,
-                url: `${process.env.REACT_APP_API}/sendMessage`
+                url: `http://${process.env.REACT_APP_API}/sendMessage`
             })
             setCurrentMessage("")
         }

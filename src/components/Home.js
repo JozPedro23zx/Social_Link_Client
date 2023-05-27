@@ -19,7 +19,7 @@ function Home(props) {
                 method: 'POST',
                 data: {allIdPosts, search},
                 withCredentials: true,
-                url: `${process.env.REACT_APP_API}/getAllPosts`
+                url: `http://${process.env.REACT_APP_API}/getAllPosts`
             }).then((dataPosts)=>{
                 setPosts(dataPosts.data)
             })
@@ -38,7 +38,7 @@ function Home(props) {
                 method: 'POST',
                 data: {allIdPosts, search},
                 withCredentials: true,
-                url: `${process.env.REACT_APP_API}/getAllPosts`
+                url: `http://${process.env.REACT_APP_API}/getAllPosts`
             }).then((dataPosts)=>{
                 let postArray = [...allPosts]
                 dataPosts.data.map(post => postArray.push(post))
@@ -46,9 +46,9 @@ function Home(props) {
             })
 
 
-            const dataLikes = await fetch(`${process.env.REACT_APP_API}/getLikeList/${props.userId}`)
+            const dataLikes = await fetch(`http://${process.env.REACT_APP_API}/getLikeList/${props.userId}`)
             const likes = await dataLikes.json()
-            setArray(likes.likes)
+            setArray(likes.data.likes)
         }catch(err){
             console.log(err)
         }

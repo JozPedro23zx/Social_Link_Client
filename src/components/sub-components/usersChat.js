@@ -7,8 +7,11 @@ function UserChat(props){
     let userId = ''
     arrayOfId.map(id => id !== props.userId ? userId = id : '')
 
-    useEffect(async () =>{
-        setUser(await props.selectUser(userId))
+    useEffect(() =>{
+        async function userTalk(){
+            setUser(await props.selectUser(userId))
+        }
+        userTalk()
     }, [userId])
 
     var name = user.name ? user.name.substr(0, 15) : ''

@@ -12,8 +12,8 @@ function PostBox(props){
 
     const post = props.post
     const likeList = props.likeList
-
     var isLike = likeList.some(element => element === post.id_post)
+    
     var likeIcon = isLike ? true_like : default_like
     const date = new Date(`${post.date}`)
 
@@ -21,7 +21,7 @@ function PostBox(props){
     useEffect(() => {
         const fetchItems = async () =>{
             try{
-                const dataUser = await fetch(`${process.env.REACT_APP_API}/getUser/${post.id_user}`)
+                const dataUser = await fetch(`http://${process.env.REACT_APP_API}/getUser/${post.id_user}`)
                 const user = await dataUser.json()
                 setUser(user)
             }catch(err){
@@ -77,7 +77,7 @@ function PostBox(props){
                     })
             };
     
-            var response = await fetch(`${process.env.REACT_APP_API}/changeLikeList`, requestOptions)
+            var response = await fetch(`http://${process.env.REACT_APP_API}/changeLikeList`, requestOptions)
             var data = await response.json()
             props.handleClick(data)
         }catch(err){console.log(err)}

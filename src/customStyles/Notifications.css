@@ -1,0 +1,58 @@
+.notifications {
+    position: fixed;
+    top: 10%;
+    left: 20px;
+    transform: translateY(-50%);
+    background-color: #6495ED;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.notification-indicator {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+  }
+  
+  .notification-window {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: -10px;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+  }
+  
+  .notification-item {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .notification-item:last-child {
+    border-bottom: none;
+  }
+  
+  .notification-item .notification {
+    font-weight: bold;
+  }
+  
+  .notification-item .read {
+    cursor: pointer;
+    color: red;
+    float: right;
+  }
+
+  .close-icon {
+    width: 16px;
+    height: 16px;
+    /* Outros estilos personalizados */
+  }
