@@ -61,7 +61,6 @@ function Notification(props) {
   }
 
   const handleRead = async (index, idSender, typeMessage) => {
-    console.log(notifications)
     setNotifications((prevNotifications) => {
       const updatedNotifications = [...prevNotifications];
       updatedNotifications.splice(index, 1);

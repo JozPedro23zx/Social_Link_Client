@@ -26,6 +26,7 @@ function ChatBox({socket, roomId, userId, messageList, receiveMessage, userSelec
             }
 
             const messageNotification ={
+                roomId: roomId,
                 idRecipient: userSelected.id_user,
                 idSender: userId,
                 type: "chat"

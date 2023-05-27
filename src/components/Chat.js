@@ -16,7 +16,15 @@ function Chat(props) {
 
     useEffect(() =>{
       rooms()
-    }, [])
+
+      return () => {
+        leaveRoom(roomId);
+      };
+    }, [roomId])
+
+    function leaveRoom(id) {
+      props.socket.emit("leave_room", id);
+    }
     
   async function rooms(){
     await Axios({
@@ -32,7 +40,6 @@ function Chat(props) {
   }
   
   const joinRoom = async (room, userSelected) => {
-      if (showChat) props.socket.emit('leave_room', roomId)
       props.socket.emit("join_room", room);
 
       await loadMessage(room)
@@ -61,15 +68,6 @@ function Chat(props) {
   }
 
   const receiveMessage = (message)=>{
-        // var MyTimeZone = Intl.DateTimeFormat().resolvedOptions().locale;
-        // var options = {
-        //   year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'
-        // };
-        // var dateUser = new Intl.DateTimeFormat(MyTimeZone, options).format(message.date)
-        // console.log(dateUser)
-        // message.date = dateUser
-        // console.log(message.date)
-
     setMessageList((list) => [...list, message])
   }
 
