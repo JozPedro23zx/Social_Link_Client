@@ -1,5 +1,10 @@
-# Getting Started with Social_Link_CLient
+
+# Social_Link: CLient
+
+  
 
 Use "npm start" or "react-scripts start" to running the app
 
-Configure you environment variable REACT_APP_API, to set your url api
+  
+### Page Screen
+<img  src="public/screen-page.png">
